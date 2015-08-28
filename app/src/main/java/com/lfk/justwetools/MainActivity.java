@@ -1,17 +1,23 @@
 package com.lfk.justwetools;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.paintview_button).setOnClickListener(this);
+        findViewById(R.id.explorerview_button).setOnClickListener(this);
+
+
     }
 
     @Override
@@ -34,5 +40,19 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent();
+        switch (v.getId()){
+            case R.id.paintview_button:
+                intent.setClass(MainActivity.this,PaintViewActivity.class);
+                break;
+            case R.id.explorerview_button:
+                intent.setClass(MainActivity.this,ExplorerActivity.class);
+                break;
+        }
+        startActivity(intent);
     }
 }

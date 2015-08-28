@@ -1,4 +1,4 @@
-package com.lfk.drawapictiure;
+package com.lfk.justwetools.PaintIt;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -23,6 +23,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.lfk.justwetools.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,7 +52,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 
-class PaintView extends View {
+public class PaintView extends View {
     // drawing board
     private Bitmap mBitmap;
     // if you set a picture in you will use it
@@ -73,7 +75,7 @@ class PaintView extends View {
     private static final float TOUCH_TOLERANCE = 4;
     // judge long pressed
     private static final long TOUCH_LONG_PRESSED = 500;
-    private boolean IsRecordPath = true;
+    private boolean IsRecordPath = false;
     //    private PathNode pathNode;
     private boolean mIsLongPressed;
 	private boolean IsShowing = false;
@@ -439,7 +441,7 @@ class PaintView extends View {
 		return true;
 	}
 
-	public void preview(ArrayList<PathNode.Node> arrayList) {
+	public void redraw(ArrayList<PathNode.Node> arrayList) {
 		IsRecordPath = false;
 		PreviewThread previewThread = new PreviewThread(this, arrayList);
 		Thread thread = new Thread(previewThread);
@@ -490,8 +492,8 @@ class PaintView extends View {
 			for(int i = 0 ;i < nodes.size();i++) {
                 PathNode.Node node=nodes.get(i);
 				Log.e(node.PenColor+":"+node.PenWidth+":"+node.EraserWidth,node.IsPaint+"");
-				float x = node.x;
-				float y = node.y;
+				float x = dip2px(node.x);
+				float y = dip2px(node.y);
 				if(i<nodes.size()-1) {
 					time=nodes.get(i+1).time-node.time;
 				}
@@ -571,7 +573,7 @@ class PaintView extends View {
 		}
 		byte[] cipherText = cipher != null ? cipher.doFinal(txt.getBytes()) : new byte[0];
 		for (int n = 0; n < cipherText.length; n++) {
-			String stmp = (java.lang.Integer.toHexString(cipherText[n] & 0XFF));
+			String stmp = (Integer.toHexString(cipherText[n] & 0XFF));
 
 			if (stmp.length() == 1) {
 				sb.append("0" + stmp);
@@ -627,11 +629,11 @@ class PaintView extends View {
 				if (flag) {
 					ReDoNodes.add(pathNode.getTheLastNote());
 					pathNode.deleteTheLastNote();
-					preview(pathNode.getPathList());
+					redraw(pathNode.getPathList());
 				} else {
 					pathNode.AddNode(ReDoNodes.get(ReDoNodes.size() - 1));
 					ReDoNodes.remove(ReDoNodes.size() - 1);
-					preview(pathNode.getPathList());
+					redraw(pathNode.getPathList());
 				}
 
 			} catch (ArrayIndexOutOfBoundsException e) {

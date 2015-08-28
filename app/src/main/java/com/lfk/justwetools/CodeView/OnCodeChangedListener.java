@@ -1,4 +1,4 @@
-package com.chlorophy.hobby.freutil.ui.CodeView;
+package com.lfk.justwetools.CodeView;
 
 public interface OnCodeChangedListener {
     void onCodeChanged(String content);

@@ -1,4 +1,4 @@
-package com.chlorophy.hobby.freutil.ui.FileExplorer;
+package com.lfk.justwetools.FileExplorer;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.chlorophy.hobby.R;
+import com.lfk.justwetools.R;
 
 import java.io.File;
 import java.util.ArrayList;

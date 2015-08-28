@@ -1,4 +1,4 @@
-package com.lfk.drawapictiure;
+package com.lfk.justwetools.PaintIt;
 
 import android.graphics.Color;
 
