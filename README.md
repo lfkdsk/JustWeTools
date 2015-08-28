@@ -72,6 +72,6 @@
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
-* 邮件:[@lfk_dsk](lfk_dsk@hotmail.com)
+* 邮件:lfk_dsk@hotmail.com
 * weibo: [@亦狂亦侠_亦温文](http://www.weibo.com/u/2443510260)
 
