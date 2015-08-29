@@ -65,7 +65,7 @@
     }
 });
 ```
-
+相关的教程和解析请看：[PaintView 绘图控件解析](http://www.cnblogs.com/lfk-dsk/p/4768850.html)
 
 
 
