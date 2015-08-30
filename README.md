@@ -68,7 +68,7 @@
 ```
 相关的教程和解析请看：[PaintView 绘图控件解析](http://www.cnblogs.com/lfk-dsk/p/4768850.html)
 ***
-* `CodeView`绘图工具: 
+* `CodeView`代码查看／修改工具: 
     * 基于WebView制作的代码编辑器
     * 实现代码高亮，暗色主题 
     * 代码及时修改
@@ -79,7 +79,7 @@
 
 * 使用基础功能只需要：
 
-2.1 添加xml：
+####2.1 添加xml：
     
 ``` xml
     <com.lfk.justwetools.CodeView.CodeView
@@ -88,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 ```
-2.2 在Activity中获取路径：
+####2.2 在Activity中获取路径：
 
 
 ``` java
@@ -110,7 +110,7 @@
 
 如果是手动复制代码的话，需要复制assests文件夹下的js文件。
 
-2.3 编辑修改：
+####2.3 编辑修改：
 ``` java
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -140,14 +140,14 @@
 
 * 使用基础功能
 
-3.1 添加xml：
+####3.1 添加xml：
 ``` xml
     <com.lfk.justwetools.FileExplorer.FileExplorer
         android:id="@+id/ex"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 ```
-3.2 在Activity里面：
+####3.2 在Activity里面：
 
 ``` java
         fileExplorer = (FileExplorer)findViewById(R.id.ex);
@@ -200,7 +200,7 @@ Item的点击事件：
 * `高级功能`: 根据文件夹内的各种文件类型的大小比例，分析比例图，不建议在sd卡根目录使用
     内容过多反应较慢
 
-3.3 添加xml：
+####3.3 添加xml：
 
 ``` xml
     <com.lfk.justwetools.Proportionview.ProportionView
@@ -210,7 +210,7 @@ Item的点击事件：
         android:layout_height="30dp" />
 ```
 
-3.4 在Activity中添加：
+####3.4 在Activity中添加：
 ``` java
     final ProportionView view = (ProportionView) findViewById(R.id.pv);
 ```
