@@ -1,5 +1,6 @@
 package com.lfk.justwetools;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -50,9 +51,9 @@ public class ExplorerActivity extends ActionBarActivity {
         fileExplorer.setOnFileChosenListener(new OnFileChosenListener() {
             @Override
             public void onFileChosen(Uri fileUri) {
-//                Intent intent = new Intent(ExplorerActivity.this, CodeActivity.class);
-//                intent.setData(fileUri);
-//                startActivity(intent);
+                Intent intent = new Intent(ExplorerActivity.this, CodeActivity.class);
+                intent.setData(fileUri);
+                startActivity(intent);
             }
         });
 
@@ -90,7 +91,7 @@ public class ExplorerActivity extends ActionBarActivity {
                 if(System.currentTimeMillis() - exitTime < 1000)
                     finish();
                 exitTime = System.currentTimeMillis();
-                Toast.makeText(this, "再次点击手脚提前射精", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "再次点击退出", Toast.LENGTH_SHORT).show();
             }
             return true;
         }
