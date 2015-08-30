@@ -36,7 +36,7 @@ public class ExplorerActivity extends ActionBarActivity {
                 return false;
             }
         });
-        //新路径下分析文件比例，搞比利，比例比例摔跤的比利
+        //新路径下分析文件比例
         fileExplorer.setOnPathChangedListener(new OnPathChangedListener() {
             @Override
             public void onPathChanged(String path) {
