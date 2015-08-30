@@ -234,5 +234,5 @@ Item的点击事件：
 
 * 邮件:[@lfk_dsk](lfk_dsk@hotmail.com)
 * weibo: [@亦狂亦侠_亦温文](http://www.weibo.com/u/2443510260)
-
+* 博客:  [刘丰恺](http://www.cnblogs.com/lfk-dsk/)
 
