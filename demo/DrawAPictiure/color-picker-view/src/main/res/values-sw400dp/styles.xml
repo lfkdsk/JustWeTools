@@ -1,0 +1,8 @@
+<resources>
+
+    <style name="ColorPickerViewStyle">
+        <item name="android:layout_width">270dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+</resources>
