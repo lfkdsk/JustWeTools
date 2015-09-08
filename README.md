@@ -3,10 +3,9 @@
 
 ##JustWe 现在有哪些模块？
 
-* `PaintView`画图工具
- 
-* `CodeView`代码编辑
-* `ExplorerView`文件管理器
+* `PaintView`画图工具  
+* `CodeView`代码编辑  
+* `ExplorerView`文件管理器  
 
 ##模块如何使用：
 * 将Demo作为library加入项目，或是直接将代码拷入
@@ -66,7 +65,11 @@
     }
 });
 ```
-相关的教程和解析请看：[PaintView 绘图控件解析](http://www.cnblogs.com/lfk-dsk/p/4768850.html)
+相关的教程和解析请看：[PaintView 绘图控件解析](http://www.cnblogs.com/lfk-dsk/p/4768850.html)  
+图例中出现的Demo:  [图例Demo](https://github.com/lfkdsk/JustWeTools/tree/master/demo/DrawAPictiure)  
+图例中使用了两个开源控件:  
+[CircularFloatingActionMenu](https://github.com/oguzbilgener/CircularFloatingActionMenu)  [android-ColorPickerPreference](https://github.com/attenzione/android-ColorPickerPreference)  
+
 ***
 * `CodeView`代码查看／修改工具: 
     * 基于WebView制作的代码编辑器
