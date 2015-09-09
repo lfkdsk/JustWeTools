@@ -6,6 +6,7 @@
 * `PaintView`画图工具  
 * `CodeView`代码编辑  
 * `ExplorerView`文件管理器  
+* `ReadBookView`小说阅读器  
 
 ##模块如何使用：
 * 将Demo作为library加入项目，或是直接将代码拷入
