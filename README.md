@@ -6,7 +6,7 @@
 * `PaintView`画图工具  
 * `CodeView`代码编辑  
 * `ExplorerView`文件管理器  
-* `ReadBookView`小说阅读器  
+* `ReadView`小说阅读器  
 
 ##模块如何使用：
 * 将Demo作为library加入项目，或是直接将代码拷入
@@ -232,7 +232,36 @@ Item的点击事件：
         }
     });
 ```
-***
+***  
+
+* `ReadView`小说阅读: 
+    * 基于Canvas制作的小说阅读  
+    * 可更换字体、字号、字颜色 
+    * 拓展性强
+### 效果图：  
+![p7](https://github.com/lfkdsk/JustWeTools/blob/master/picture/readbook.png)  
+
+* 使用基础功能只需要：
+``` java
+   ReadView readView = new ReadView(this,dir.getPath());
+   setContentView(readView);
+```  
+* 如果需要打开文件时调用请修改manifest和：  
+``` java
+        File dir = null;
+        Uri fileUri = getIntent().getData();
+        if (fileUri != null) {
+            dir = new File(fileUri.getPath());
+        }
+        readView = null;
+        if (dir != null) {
+            readView = new ReadView(this,dir.getPath());
+        }
+        else
+            finish();
+        setContentView(readView);
+```
+
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
