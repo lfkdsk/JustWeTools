@@ -5,14 +5,15 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -56,7 +57,8 @@ public class PaintView extends View {
     // drawing board
     private Bitmap mBitmap;
     // if you set a picture in you will use it
-    private Bitmap mBitmapBackGround;
+    private Bitmap mBitmapInit;
+	private int mBitmapBackGround = R.drawable.whitbackground;
     private Canvas mCanvas;
     private Path mPath;
     private Paint mBitmapPaint;
@@ -75,10 +77,11 @@ public class PaintView extends View {
     private static final float TOUCH_TOLERANCE = 4;
     // judge long pressed
     private static final long TOUCH_LONG_PRESSED = 500;
-    private boolean IsRecordPath = false;
+    private boolean IsRecordPath = true;
     //    private PathNode pathNode;
     private boolean mIsLongPressed;
 	private boolean IsShowing = false;
+	private boolean IsFirstTime = true;
     private long Touch_Down_Time;
     private long Touch_Up_Time;
     private OnPathListener listener;
@@ -91,18 +94,40 @@ public class PaintView extends View {
 	public PaintView(Context context,AttributeSet attrs) {
 		super(context,attrs);
 		this.context = context;
+		mPaint = new Paint();
+		mEraserPaint = new Paint();
+		Init_Paint(UserInfo.PaintColor, UserInfo.PaintWidth);
+		Init_Eraser(UserInfo.EraserWidth);
+		WindowManager manager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+		width = manager.getDefaultDisplay().getWidth();
+		height = manager.getDefaultDisplay().getHeight();
+//        mBitmap = BitmapFactory.decodeResource(context.getResources(), mBitmapBackGround).
+//                copy(Bitmap.Config.ARGB_8888, false);
+//        mBitmap = Bitmap.createScaledBitmap(mBitmap,width,height,false);
+		mBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
+		mCanvas = new Canvas(mBitmap);
+		mPath = new Path();
+		mBitmapPaint = new Paint(Paint.DITHER_FLAG);
+	}
+
+    public PaintView(Context context) {
+        super(context);
+        this.context = context;
         mPaint = new Paint();
         mEraserPaint = new Paint();
-        Init_Paint(UserInfo.PaintColor,UserInfo.PaintWidth);
+        Init_Paint(UserInfo.PaintColor, UserInfo.PaintWidth);
         Init_Eraser(UserInfo.EraserWidth);
         WindowManager manager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
         width = manager.getDefaultDisplay().getWidth();
         height = manager.getDefaultDisplay().getHeight();
-        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+//        mBitmap = BitmapFactory.decodeResource(context.getResources(), mBitmapBackGround).
+//                copy(Bitmap.Config.ARGB_8888, false);
+//        mBitmap = Bitmap.createScaledBitmap(mBitmap,width,height,false);
+		mBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
         mPath = new Path();
         mBitmapPaint = new Paint(Paint.DITHER_FLAG);
-	}
+    }
 
     // init paint
     private void Init_Paint(int color ,int width){
@@ -142,7 +167,6 @@ public class PaintView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(Color.WHITE);
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
         if(IsPaint)
             canvas.drawPath(mPath, mPaint);
@@ -156,7 +180,7 @@ public class PaintView extends View {
 		mX = x;
 		mY = y;
 		 if(IsRecordPath) {
-			 listener.AddNodeToPath(x, y, MotionEvent.ACTION_DOWN, IsPaint);
+			 listener.addNodeToPath(x, y, MotionEvent.ACTION_DOWN, IsPaint);
 		 }
 	}
 
@@ -169,7 +193,7 @@ public class PaintView extends View {
 			mX = x;
 			mY = y;
 			if(IsRecordPath) {
-				listener.AddNodeToPath(x, y, MotionEvent.ACTION_MOVE, IsPaint);
+				listener.addNodeToPath(x, y, MotionEvent.ACTION_MOVE, IsPaint);
 			}
 		}
 	}
@@ -178,7 +202,7 @@ public class PaintView extends View {
 		mCanvas.drawPath(mPath, paint);
 		mPath.reset();
         if(IsRecordPath) {
-			listener.AddNodeToPath(mX, mY, MotionEvent.ACTION_UP, IsPaint);
+			listener.addNodeToPath(mX, mY, MotionEvent.ACTION_UP, IsPaint);
 		}
 	}
 
@@ -193,6 +217,10 @@ public class PaintView extends View {
 		showCustomToast("设定笔粗为：" + width);
 		mPaint.setStrokeWidth(width);
 	}
+
+    public void save(){
+        mCanvas.save();
+    }
 
 	public void setIsPaint(boolean isPaint) {
 		IsPaint = isPaint;
@@ -245,8 +273,12 @@ public class PaintView extends View {
 		return mPaint;
 	}
 
+	/**
+	 *  @author lfk_dsk@hotmail.com
+	 *  clean the canvas
+	 * */
 	public void clean() {
-		mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        mBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
 		mCanvas.setBitmap(mBitmap);
 		try {
 			Message msg = new Message();
@@ -258,7 +290,9 @@ public class PaintView extends View {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        IsFirstTime = true;
 	}
+
 	/**
 	 *  @author lfk_dsk@hotmail.com
 	 *  @param uri get the uri of a picture
@@ -267,13 +301,21 @@ public class PaintView extends View {
 		Log.e("图片路径", String.valueOf(uri));
 		ContentResolver cr = context.getContentResolver();
 		try {
-			mBitmapBackGround = BitmapFactory.decodeStream(cr.openInputStream(uri));
-//			RectF rectF = new RectF(0,0,width,height);
-			mCanvas.drawBitmap(mBitmapBackGround, 0, 0, mBitmapPaint);
+			mBitmapInit = BitmapFactory.decodeStream(cr.openInputStream(uri));
+			drawBitmapToCanvas(mBitmapInit);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		invalidate();
+	}
+
+	private void drawBitmapToCanvas(Bitmap bitmap){
+		if(bitmap.getHeight() > height || bitmap.getWidth() > width){
+			RectF rectF = new RectF(0,0,width,height);
+			mCanvas.drawBitmap(bitmap, null, rectF, mBitmapPaint);
+		}else {
+			mCanvas.drawBitmap(bitmap, 0, 0, mBitmapPaint);
+		}
 	}
 
 	/**
@@ -281,13 +323,22 @@ public class PaintView extends View {
 	 *  @param file Pictures' file
 	 * */
 	public void BitmapToPicture(File file){
-		FileOutputStream fileOutputStream = null;
+		FileOutputStream fileOutputStream;
 		try {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 			Date now = new Date();
 			File tempfile = new File(file+"/"+formatter.format(now)+".jpg");
 			fileOutputStream = new FileOutputStream(tempfile);
-			mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+			Bitmap mBitmapbg = BitmapFactory.decodeResource(context.getResources(), mBitmapBackGround).
+					copy(Bitmap.Config.ARGB_8888, false);
+			mBitmapbg = Bitmap.createScaledBitmap(mBitmapbg,width,height,false);
+			if(mBitmapInit != null){
+				mBitmapbg = toConformBitmap(mBitmapbg,mBitmapInit);
+				mBitmapbg = toConformBitmap(mBitmapbg,mBitmap);
+			}else {
+				mBitmapbg = toConformBitmap(mBitmapbg,mBitmap);
+			}
+			mBitmapbg.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
 			showCustomToast(tempfile.getName() + "已保存");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -313,15 +364,7 @@ public class PaintView extends View {
 		json += "]";
 		try {
 			json = enCrypto(json, "lfk_dsk@hotmail.com");
-		} catch (InvalidKeySpecException e) {
-			e.printStackTrace();
-		} catch (InvalidKeyException e) {
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			e.printStackTrace();
-		} catch (IllegalBlockSizeException e) {
-			e.printStackTrace();
-		} catch (BadPaddingException e) {
+		} catch (InvalidKeySpecException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException | NoSuchPaddingException e) {
 			e.printStackTrace();
 		}
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
@@ -340,8 +383,23 @@ public class PaintView extends View {
 		}
 	}
 
+	private Bitmap toConformBitmap(Bitmap background, Bitmap foreground) {
+		if( background == null ) {
+			return null;
+		}
+		int bgWidth = background.getWidth();
+		int bgHeight = background.getHeight();
+		Bitmap bitmap = Bitmap.createBitmap(bgWidth, bgHeight, Bitmap.Config.ARGB_8888);
+		Canvas cv = new Canvas(bitmap);
+		cv.drawBitmap(background, 0, 0, null);//在 0，0坐标开始画入bg
+		cv.drawBitmap(foreground, 0, 0, null);//在 0，0坐标开始画入fg ，可以从任意位置画入
+		cv.save(Canvas.ALL_SAVE_FLAG);//保存
+		cv.restore();//存储
+		return bitmap;
+	}
 	public void clearReUnList(){
 		ReDoNodes.clear();
+		mBitmapInit = null;
 	}
 
 	public void JsonToPathNodeToHandle(Uri uri){
@@ -351,11 +409,15 @@ public class PaintView extends View {
 		handler.sendMessage(message);
 	}
 
+	/**
+	 *  @author lfk_dsk@hotmail.com
+	 *  @param file the file of .lfk
+	 * */
 	private void JsonToPathNode(String file){
 		String res = "";
 		ArrayList<PathNode.Node> arrayList = new ArrayList<>();
 		try {
-			Log.e("绝对路径1",file);
+			Log.e("绝对路径",file);
 			FileInputStream in = new FileInputStream(file);
 			ByteArrayOutputStream bufferOut = new ByteArrayOutputStream();
 			byte[] buffer = new byte[1024];
@@ -363,23 +425,12 @@ public class PaintView extends View {
 				bufferOut.write(buffer, 0, i);
 			}
 			res = new String(bufferOut.toByteArray(), Charset.forName("utf-8"));
-			Log.e("字符串文件",res);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
 			res = deCrypto(res, "lfk_dsk@hotmail.com");
-		} catch (InvalidKeyException e) {
-			e.printStackTrace();
-		} catch (InvalidKeySpecException e) {
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			e.printStackTrace();
-		} catch (IllegalBlockSizeException e) {
-			e.printStackTrace();
-		} catch (BadPaddingException e) {
+		} catch (InvalidKeyException | IllegalBlockSizeException | BadPaddingException | NoSuchPaddingException | InvalidKeySpecException e) {
 			e.printStackTrace();
 		}
 		try {
@@ -387,8 +438,8 @@ public class PaintView extends View {
 			for(int i = 0;i < jsonArray.length();i++){
 				JSONObject jsonObject = new JSONObject(jsonArray.getString(i));
 				PathNode.Node node = new PathNode().NewAnode();
-				node.x = dip2px(jsonObject.getInt("x"));
-				node.y = dip2px(jsonObject.getInt("y"));
+				node.x = jsonObject.getInt("x");
+				node.y = jsonObject.getInt("y");
 				node.TouchEvent = jsonObject.getInt("TouchEvent");
 				node.PenWidth = jsonObject.getInt("PenWidth");
 				node.PenColor = jsonObject.getInt("PenColor");
@@ -415,33 +466,35 @@ public class PaintView extends View {
 	}
 
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		float x = event.getX();
-		float y = event.getY();
-		switch (event.getAction()) {
-			case MotionEvent.ACTION_DOWN:
-				Touch_Down(x, y);
-				invalidate();
-				break;
+	public boolean onTouchEvent(@NonNull MotionEvent event) {
+		if(!isShowing()) {
+			float x = event.getX();
+			float y = event.getY();
+			switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					Touch_Down(x, y);
+					invalidate();
+					break;
 
-			case MotionEvent.ACTION_MOVE:
-				Touch_Move(x, y);
-				invalidate();
-				break;
+				case MotionEvent.ACTION_MOVE:
+					Touch_Move(x, y);
+					invalidate();
+					break;
 
-			case MotionEvent.ACTION_UP:
-				if(IsPaint){
-					Touch_Up(mPaint);
-				}else {
-					Touch_Up(mEraserPaint);
-				}
-				invalidate();
-				break;
+				case MotionEvent.ACTION_UP:
+					if (IsPaint) {
+						Touch_Up(mPaint);
+					} else {
+						Touch_Up(mEraserPaint);
+					}
+					invalidate();
+					break;
+			}
 		}
 		return true;
 	}
 
-	public void redraw(ArrayList<PathNode.Node> arrayList) {
+	public void preview(ArrayList<PathNode.Node> arrayList) {
 		IsRecordPath = false;
 		PreviewThread previewThread = new PreviewThread(this, arrayList);
 		Thread thread = new Thread(previewThread);
@@ -489,13 +542,16 @@ public class PaintView extends View {
 			time = 0;
 			IsShowing = true;
 			clean();
+			if(mBitmapInit != null){
+				drawBitmapToCanvas(mBitmapInit);
+			}
 			for(int i = 0 ;i < nodes.size();i++) {
-                PathNode.Node node=nodes.get(i);
+                PathNode.Node node = nodes.get(i);
 				Log.e(node.PenColor+":"+node.PenWidth+":"+node.EraserWidth,node.IsPaint+"");
 				float x = dip2px(node.x);
 				float y = dip2px(node.y);
-				if(i<nodes.size()-1) {
-					time=nodes.get(i+1).time-node.time;
+				if(i < nodes.size() - 1) {
+					time = nodes.get(i+1).time - node.time;
 				}
 				IsPaint = node.IsPaint;
 				if(node.IsPaint){
@@ -521,7 +577,7 @@ public class PaintView extends View {
 						}
 						break;
 				}
-					Message msg=new Message();
+					Message msg = new Message();
 					msg.obj = view;
 					msg.what = INDIVIDE;
 					handler.sendMessage(msg);
@@ -627,13 +683,22 @@ public class PaintView extends View {
 			ReDoOrUnDoFlag = true;
 			try {
 				if (flag) {
+					Log.e("redo","");
 					ReDoNodes.add(pathNode.getTheLastNote());
 					pathNode.deleteTheLastNote();
-					redraw(pathNode.getPathList());
+					preview(pathNode.getPathList());
+					invalidate();
+//					ReDoOrUnDoFlag = true;
+//					if(!isShowing())
+//						preview(pathNode.getPathList());
 				} else {
-					pathNode.AddNode(ReDoNodes.get(ReDoNodes.size() - 1));
+					Log.e("undo","");
+					pathNode.addNode(ReDoNodes.get(ReDoNodes.size() - 1));
 					ReDoNodes.remove(ReDoNodes.size() - 1);
-					redraw(pathNode.getPathList());
+					preview(pathNode.getPathList());
+//					ReDoOrUnDoFlag = true;
+//					if(!isShowing())
+//						preview(pathNode.getPathList());
 				}
 
 			} catch (ArrayIndexOutOfBoundsException e) {

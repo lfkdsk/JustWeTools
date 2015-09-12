@@ -57,7 +57,7 @@ public class MainActivity extends Activity implements ColorPickerDialogFragment.
         }
         paintView.setOnPathListener(new OnPathListener() {
             @Override
-            public void AddNodeToPath(float x, float y, int event, boolean IsPaint) {
+            public void addNodeToPath(float x, float y, int event, boolean IsPaint) {
                 PathNode.Node tempnode = pathNode.new Node();
                 tempnode.x = paintView.px2dip(x);
                 tempnode.y = paintView.px2dip(y);
@@ -68,10 +68,10 @@ public class MainActivity extends Activity implements ColorPickerDialogFragment.
                     tempnode.EraserWidth = UserInfo.EraserWidth;
                 }
                 tempnode.IsPaint = IsPaint;
-                Log.e(tempnode.PenColor + ":" + tempnode.PenWidth + ":" + tempnode.EraserWidth, tempnode.IsPaint + "");
+                Log.e("Record"+tempnode.PenColor + ":" + tempnode.PenWidth + ":" + tempnode.EraserWidth, tempnode.IsPaint + "");
                 tempnode.TouchEvent = event;
                 tempnode.time = System.currentTimeMillis();
-                pathNode.AddNode(tempnode);
+                pathNode.addNode(tempnode);
             }
         });
         setContentView(paintView);
@@ -175,7 +175,7 @@ public class MainActivity extends Activity implements ColorPickerDialogFragment.
             public void onClick(View v) {
                 if (!paintView.isShowing()) {
                     paintView.clean();
-                    pathNode.ClearList();
+                    pathNode.clearList();
                     paintView.clearReUnList();
                 }
             }
@@ -384,6 +384,9 @@ public class MainActivity extends Activity implements ColorPickerDialogFragment.
                 break;
             case KeyEvent.KEYCODE_VOLUME_DOWN:
                 paintView.ReDoORUndo(false);
+                break;
+            case KeyEvent.KEYCODE_BACK:
+                moveTaskToBack(true);
                 break;
         }
         return true;

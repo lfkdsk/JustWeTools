@@ -48,7 +48,7 @@ public class PaintViewActivity extends Activity implements View.OnClickListener,
 
         paintView.setOnPathListener(new OnPathListener() {
             @Override
-            public void AddNodeToPath(float x, float y, int event, boolean IsPaint) {
+            public void addNodeToPath(float x, float y, int event, boolean IsPaint) {
                 PathNode.Node tempnode = pathNode.new Node();
                 // convert px to dp
                 tempnode.x = paintView.px2dip(x);
@@ -63,7 +63,7 @@ public class PaintViewActivity extends Activity implements View.OnClickListener,
                 Log.e(tempnode.PenColor + ":" + tempnode.PenWidth + ":" + tempnode.EraserWidth, tempnode.IsPaint + "");
                 tempnode.TouchEvent = event;
                 tempnode.time = System.currentTimeMillis();
-                pathNode.AddNode(tempnode);
+                pathNode.addNode(tempnode);
             }
         });
 
@@ -104,12 +104,12 @@ public class PaintViewActivity extends Activity implements View.OnClickListener,
                 // You should clean 3 (Paintview/list to record/list to build Redo/Undo)
                 if (!paintView.isShowing()) {
                     paintView.clean();
-                    pathNode.ClearList();
+                    pathNode.clearList();
                     paintView.clearReUnList();
                 }
                 break;
             case R.id.redraw:
-                paintView.redraw(pathNode.getPathList());
+                paintView.preview(pathNode.getPathList());
                 break;
             case R.id.eraser:
                 // use eraser

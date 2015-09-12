@@ -5,6 +5,6 @@ package com.lfk.justwetools.PaintIt;
  */
 public interface OnPathListener {
 
-    void AddNodeToPath(float x, float y ,int event,boolean IsPaint);
+    void addNodeToPath(float x, float y, int event, boolean Ispaint);
 
 }

@@ -26,7 +26,7 @@ public class PathNode extends Application{
         return PathList;
     }
 
-    public void AddNode(Node node){
+    public void addNode(Node node){
         PathList.add(node);
     }
 
@@ -35,7 +35,7 @@ public class PathNode extends Application{
     }
 
 
-    public void ClearList(){
+    public void clearList(){
         PathList.clear();
     }
 
