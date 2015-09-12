@@ -7,13 +7,25 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
     <Button
-        android:text="PaintView"
+        android:text="绘图PaintView"
         android:id="@+id/paintview_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/explorerview_button"
-        android:text="ExplorerView"
+        android:text="文件浏览ExplorerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/codeview_button"
+        android:text="代码浏览CodeView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/readerview_button"
+        android:text="阅读ReaderView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

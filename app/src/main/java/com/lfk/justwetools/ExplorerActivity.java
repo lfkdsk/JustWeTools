@@ -57,8 +57,8 @@ public class ExplorerActivity extends ActionBarActivity {
             }
         });
 
-        fileExplorer.setCurrentDir(Environment.getExternalStorageDirectory().getPath());
-        fileExplorer.setRootDir(Environment.getExternalStorageDirectory().getPath());
+        fileExplorer.setCurrentDir(Environment.getExternalStorageDirectory().getPath()+"/DCIM");
+        fileExplorer.setRootDir(Environment.getExternalStorageDirectory().getPath()+"/DCIM");
     }
 
     @Override
