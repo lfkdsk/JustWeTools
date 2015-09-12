@@ -48,11 +48,13 @@ public class MainActivity extends Activity implements ColorPickerDialogFragment.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
         pathNode = (PathNode)getApplication();
-        paintView = (PaintView)findViewById(R.id.paint);
+        paintView = new PaintView(this);
         paintView.setIsRecordPath(true,pathNode);
+        Intent intent = getIntent();
+        if(intent.getData() != null){
+            paintView.JsonToPathNodeToHandle(intent.getData());
+        }
         paintView.setOnPathListener(new OnPathListener() {
             @Override
             public void AddNodeToPath(float x, float y, int event, boolean IsPaint) {
@@ -72,8 +74,14 @@ public class MainActivity extends Activity implements ColorPickerDialogFragment.
                 pathNode.AddNode(tempnode);
             }
         });
-
+        setContentView(paintView);
         Init_View();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        paintView.save();
     }
 
     private void Init_View(){

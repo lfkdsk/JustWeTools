@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
@@ -13,6 +12,7 @@ import android.graphics.PorterDuffXfermode;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -54,7 +54,8 @@ class PaintView extends View {
     // drawing board
     private Bitmap mBitmap;
     // if you set a picture in you will use it
-    private Bitmap mBitmapBackGround;
+    private Bitmap mBitmapInit;
+	private int mBitmapBackGround = R.drawable.whitbackground;
     private Canvas mCanvas;
     private Path mPath;
     private Paint mBitmapPaint;
@@ -77,6 +78,7 @@ class PaintView extends View {
     //    private PathNode pathNode;
     private boolean mIsLongPressed;
 	private boolean IsShowing = false;
+	private boolean IsFirstTime = true;
     private long Touch_Down_Time;
     private long Touch_Up_Time;
     private OnPathListener listener;
@@ -101,6 +103,25 @@ class PaintView extends View {
         mPath = new Path();
         mBitmapPaint = new Paint(Paint.DITHER_FLAG);
 	}
+
+    public PaintView(Context context) {
+        super(context);
+        this.context = context;
+        mPaint = new Paint();
+        mEraserPaint = new Paint();
+        Init_Paint(UserInfo.PaintColor, UserInfo.PaintWidth);
+        Init_Eraser(UserInfo.EraserWidth);
+        WindowManager manager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+        width = manager.getDefaultDisplay().getWidth();
+        height = manager.getDefaultDisplay().getHeight();
+//        mBitmap = BitmapFactory.decodeResource(context.getResources(), mBitmapBackGround).
+//                copy(Bitmap.Config.ARGB_8888, false);
+//        mBitmap = Bitmap.createScaledBitmap(mBitmap,width,height,false);
+		mBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
+        mCanvas = new Canvas(mBitmap);
+        mPath = new Path();
+        mBitmapPaint = new Paint(Paint.DITHER_FLAG);
+    }
 
     // init paint
     private void Init_Paint(int color ,int width){
@@ -140,7 +161,6 @@ class PaintView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(Color.WHITE);
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
         if(IsPaint)
             canvas.drawPath(mPath, mPaint);
@@ -191,6 +211,10 @@ class PaintView extends View {
 		showCustomToast("设定笔粗为：" + width);
 		mPaint.setStrokeWidth(width);
 	}
+
+    public void save(){
+        mCanvas.save();
+    }
 
 	public void setIsPaint(boolean isPaint) {
 		IsPaint = isPaint;
@@ -243,8 +267,12 @@ class PaintView extends View {
 		return mPaint;
 	}
 
+	/**
+	 *  @author lfk_dsk@hotmail.com
+	 *  clean the canvas
+	 * */
 	public void clean() {
-		mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        mBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
 		mCanvas.setBitmap(mBitmap);
 		try {
 			Message msg = new Message();
@@ -256,7 +284,9 @@ class PaintView extends View {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        IsFirstTime = true;
 	}
+
 	/**
 	 *  @author lfk_dsk@hotmail.com
 	 *  @param uri get the uri of a picture
@@ -265,9 +295,9 @@ class PaintView extends View {
 		Log.e("图片路径", String.valueOf(uri));
 		ContentResolver cr = context.getContentResolver();
 		try {
-			mBitmapBackGround = BitmapFactory.decodeStream(cr.openInputStream(uri));
+			mBitmapInit = BitmapFactory.decodeStream(cr.openInputStream(uri));
 //			RectF rectF = new RectF(0,0,width,height);
-			mCanvas.drawBitmap(mBitmapBackGround, 0, 0, mBitmapPaint);
+			mCanvas.drawBitmap(mBitmapInit, 0, 0, mBitmapPaint);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -279,13 +309,16 @@ class PaintView extends View {
 	 *  @param file Pictures' file
 	 * */
 	public void BitmapToPicture(File file){
-		FileOutputStream fileOutputStream = null;
+		FileOutputStream fileOutputStream;
 		try {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 			Date now = new Date();
 			File tempfile = new File(file+"/"+formatter.format(now)+".jpg");
 			fileOutputStream = new FileOutputStream(tempfile);
-			mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+			Bitmap mBitmapbg = BitmapFactory.decodeResource(context.getResources(), mBitmapBackGround).
+					copy(Bitmap.Config.ARGB_8888, false);
+			mBitmapbg = Bitmap.createScaledBitmap(mBitmapbg,width,height,false);
+			toConformBitmap(mBitmapbg,mBitmap).compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
 			showCustomToast(tempfile.getName() + "已保存");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -338,6 +371,20 @@ class PaintView extends View {
 		}
 	}
 
+	private Bitmap toConformBitmap(Bitmap background, Bitmap foreground) {
+		if( background == null ) {
+			return null;
+		}
+		int bgWidth = background.getWidth();
+		int bgHeight = background.getHeight();
+		Bitmap bitmap = Bitmap.createBitmap(bgWidth, bgHeight, Bitmap.Config.ARGB_8888);
+		Canvas cv = new Canvas(bitmap);
+		cv.drawBitmap(background, 0, 0, null);//在 0，0坐标开始画入bg
+		cv.drawBitmap(foreground, 0, 0, null);//在 0，0坐标开始画入fg ，可以从任意位置画入
+		cv.save(Canvas.ALL_SAVE_FLAG);//保存
+		cv.restore();//存储
+		return bitmap;
+	}
 	public void clearReUnList(){
 		ReDoNodes.clear();
 	}
@@ -349,11 +396,15 @@ class PaintView extends View {
 		handler.sendMessage(message);
 	}
 
+	/**
+	 *  @author lfk_dsk@hotmail.com
+	 *  @param file the file of .lfk
+	 * */
 	private void JsonToPathNode(String file){
 		String res = "";
 		ArrayList<PathNode.Node> arrayList = new ArrayList<>();
 		try {
-			Log.e("绝对路径1",file);
+			Log.e("绝对路径",file);
 			FileInputStream in = new FileInputStream(file);
 			ByteArrayOutputStream bufferOut = new ByteArrayOutputStream();
 			byte[] buffer = new byte[1024];
@@ -361,23 +412,12 @@ class PaintView extends View {
 				bufferOut.write(buffer, 0, i);
 			}
 			res = new String(bufferOut.toByteArray(), Charset.forName("utf-8"));
-			Log.e("字符串文件",res);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
 			res = deCrypto(res, "lfk_dsk@hotmail.com");
-		} catch (InvalidKeyException e) {
-			e.printStackTrace();
-		} catch (InvalidKeySpecException e) {
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			e.printStackTrace();
-		} catch (IllegalBlockSizeException e) {
-			e.printStackTrace();
-		} catch (BadPaddingException e) {
+		} catch (InvalidKeyException | IllegalBlockSizeException | BadPaddingException | NoSuchPaddingException | InvalidKeySpecException e) {
 			e.printStackTrace();
 		}
 		try {
@@ -385,8 +425,8 @@ class PaintView extends View {
 			for(int i = 0;i < jsonArray.length();i++){
 				JSONObject jsonObject = new JSONObject(jsonArray.getString(i));
 				PathNode.Node node = new PathNode().NewAnode();
-				node.x = dip2px(jsonObject.getInt("x"));
-				node.y = dip2px(jsonObject.getInt("y"));
+				node.x = jsonObject.getInt("x");
+				node.y = jsonObject.getInt("y");
 				node.TouchEvent = jsonObject.getInt("TouchEvent");
 				node.PenWidth = jsonObject.getInt("PenWidth");
 				node.PenColor = jsonObject.getInt("PenColor");
@@ -413,7 +453,7 @@ class PaintView extends View {
 	}
 
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
+	public boolean onTouchEvent(@NonNull MotionEvent event) {
 		float x = event.getX();
 		float y = event.getY();
 		switch (event.getAction()) {
@@ -488,7 +528,7 @@ class PaintView extends View {
 			IsShowing = true;
 			clean();
 			for(int i = 0 ;i < nodes.size();i++) {
-                PathNode.Node node=nodes.get(i);
+                PathNode.Node node = nodes.get(i);
 				Log.e(node.PenColor+":"+node.PenWidth+":"+node.EraserWidth,node.IsPaint+"");
 				float x = dip2px(node.x);
 				float y = dip2px(node.y);
@@ -519,7 +559,7 @@ class PaintView extends View {
 						}
 						break;
 				}
-					Message msg=new Message();
+					Message msg = new Message();
 					msg.obj = view;
 					msg.what = INDIVIDE;
 					handler.sendMessage(msg);
