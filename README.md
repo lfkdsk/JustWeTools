@@ -237,7 +237,7 @@ Item的点击事件：
 * `ReadView`小说阅读：
     * 基于Canvas制作的小说阅读  
     * 可更换字体、字号、字颜色 
-    * 拓展性强
+    * 拓展性强  
 ### 效果图：  
 ![p7](https://github.com/lfkdsk/JustWeTools/blob/master/picture/readbook.png)  
 
