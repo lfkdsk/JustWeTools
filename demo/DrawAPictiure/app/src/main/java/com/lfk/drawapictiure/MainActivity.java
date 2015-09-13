@@ -54,6 +54,7 @@ public class MainActivity extends Activity implements ColorPickerDialogFragment.
         Intent intent = getIntent();
         if(intent.getData() != null){
             paintView.JsonToPathNodeToHandle(intent.getData());
+            paintView.preview(pathNode.getPathList());
         }
         paintView.setOnPathListener(new OnPathListener() {
             @Override
@@ -68,7 +69,6 @@ public class MainActivity extends Activity implements ColorPickerDialogFragment.
                     tempnode.EraserWidth = UserInfo.EraserWidth;
                 }
                 tempnode.IsPaint = IsPaint;
-                Log.e("Record"+tempnode.PenColor + ":" + tempnode.PenWidth + ":" + tempnode.EraserWidth, tempnode.IsPaint + "");
                 tempnode.TouchEvent = event;
                 tempnode.time = System.currentTimeMillis();
                 pathNode.addNode(tempnode);

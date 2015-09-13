@@ -94,20 +94,17 @@ public class PaintView extends View {
 	public PaintView(Context context,AttributeSet attrs) {
 		super(context,attrs);
 		this.context = context;
-		mPaint = new Paint();
-		mEraserPaint = new Paint();
-		Init_Paint(UserInfo.PaintColor, UserInfo.PaintWidth);
-		Init_Eraser(UserInfo.EraserWidth);
-		WindowManager manager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
-		width = manager.getDefaultDisplay().getWidth();
-		height = manager.getDefaultDisplay().getHeight();
-//        mBitmap = BitmapFactory.decodeResource(context.getResources(), mBitmapBackGround).
-//                copy(Bitmap.Config.ARGB_8888, false);
-//        mBitmap = Bitmap.createScaledBitmap(mBitmap,width,height,false);
-		mBitmap = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
-		mCanvas = new Canvas(mBitmap);
-		mPath = new Path();
-		mBitmapPaint = new Paint(Paint.DITHER_FLAG);
+        mPaint = new Paint();
+        mEraserPaint = new Paint();
+        Init_Paint(UserInfo.PaintColor,UserInfo.PaintWidth);
+        Init_Eraser(UserInfo.EraserWidth);
+        WindowManager manager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+        width = manager.getDefaultDisplay().getWidth();
+        height = manager.getDefaultDisplay().getHeight();
+        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        mCanvas = new Canvas(mBitmap);
+        mPath = new Path();
+        mBitmapPaint = new Paint(Paint.DITHER_FLAG);
 	}
 
     public PaintView(Context context) {
@@ -350,8 +347,8 @@ public class PaintView extends View {
 		String json = "[";
 		for(int i = 0;i < arrayList.size();i++){
 			PathNode.Node node = arrayList.get(i);
-			json += "{"+"\""+"x"+"\""+":"+px2dip(node.x)+"," +
-					"\""+"y"+"\""+":"+px2dip(node.y)+","+
+			json += "{"+"\""+"x"+"\""+":"+node.x+"," +
+					"\""+"y"+"\""+":"+node.y+","+
 					"\""+"PenColor"+"\""+":"+node.PenColor+","+
 					"\""+"PenWidth"+"\""+":"+node.PenWidth+","+
 					"\""+"EraserWidth"+"\""+":"+node.EraserWidth+","+
@@ -438,6 +435,7 @@ public class PaintView extends View {
 			for(int i = 0;i < jsonArray.length();i++){
 				JSONObject jsonObject = new JSONObject(jsonArray.getString(i));
 				PathNode.Node node = new PathNode().NewAnode();
+				// dp
 				node.x = jsonObject.getInt("x");
 				node.y = jsonObject.getInt("y");
 				node.TouchEvent = jsonObject.getInt("TouchEvent");
@@ -547,9 +545,9 @@ public class PaintView extends View {
 			}
 			for(int i = 0 ;i < nodes.size();i++) {
                 PathNode.Node node = nodes.get(i);
-				Log.e(node.PenColor+":"+node.PenWidth+":"+node.EraserWidth,node.IsPaint+"");
 				float x = dip2px(node.x);
 				float y = dip2px(node.y);
+                Log.e("pre"+x,"pre"+y);
 				if(i < nodes.size() - 1) {
 					time = nodes.get(i+1).time - node.time;
 				}
@@ -629,7 +627,7 @@ public class PaintView extends View {
 		}
 		byte[] cipherText = cipher != null ? cipher.doFinal(txt.getBytes()) : new byte[0];
 		for (int n = 0; n < cipherText.length; n++) {
-			String stmp = (Integer.toHexString(cipherText[n] & 0XFF));
+			String stmp = (java.lang.Integer.toHexString(cipherText[n] & 0XFF));
 
 			if (stmp.length() == 1) {
 				sb.append("0" + stmp);
