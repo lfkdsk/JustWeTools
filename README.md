@@ -272,7 +272,7 @@ Item的点击事件：
 
 ## License
 
-    Copyright 2014 [刘丰恺](http://www.cnblogs.com/lfk-dsk/)
+    Copyright 2015 [刘丰恺](http://www.cnblogs.com/lfk-dsk/)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
