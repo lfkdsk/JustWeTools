@@ -1,18 +1,21 @@
 # JustWeTools - Some useful tools
 ![logo](http://www.imgjav.com/images/justwe97bd9.png)
 
-##JustWe 现在有哪些模块？
+##JustWe 现在有哪些模块?  
 
-* `PaintView`画图工具  
-* `CodeView`代码编辑  
-* `ExplorerView`文件管理器  
-* `ReadView`小说阅读器  
+* View自定义控件  
+   * `PaintView`画图工具  
+   * `CodeView`代码编辑  
+   * `ExplorerView`文件管理器  
+   * `ReadView`小说阅读器  
+   
+
 
 ##模块如何使用：
 * 将Demo作为library加入项目，或是直接将代码拷入
 
 ##JustWe 模块介绍：
-
+* View自定义控件:  
 * `PaintView`画图工具:
     *  可直接使用设定按钮来实现已拥有的方法，且拓展性强
     *  基础功能：更换颜色、更换橡皮、以及更换橡皮和笔的粗细、清屏、倒入图片
