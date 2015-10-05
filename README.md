@@ -267,7 +267,16 @@ Item的点击事件：
         else
             finish();
         setContentView(readView);
-```
+```  
+
+* `MarkDownView`支持MarkDown语法的渲染器:  
+  * 基于WebView的MarkDown渲染器  
+  * 支持标准化的MarkDown语法
+  * 调用接口和`CodeView`保持一致使用简便  
+
+### 效果图:  
+![markdown]()
+  
 ***
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
