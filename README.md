@@ -304,6 +304,39 @@ Item的点击事件：
             markDownView.setDirSource(dir);
         }
 ```
+***  
+
+* `VerTextView`竖行排版的TextView:  
+  * 支持竖行排版
+  * 添加了下划线功能，开启简便，下划线粗细、颜色、间距均可自定义
+  * 接口调用方式与TextView相似，使用简便  
+
+### 效果图:  
+![vertextview](https://github.com/lfkdsk/JustWeTools/blob/master/picture/VerTextView.png)  
+* 使用基础功能:  
+``` xml
+    <com.lfk.justwetools.VerText.VerTextView
+        android:id="@+id/vertextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+```
+并添加:  
+``` java
+        VerTextView verTextView = (VerTextView)findViewById(R.id.vertextview);
+        verTextView.setText(getResources().getString(R.string.poem));
+```
+* 一些设定:  
+``` java
+        verTextView.setFontSize(100);             // 设定字体尺寸
+        verTextView.setIsOpenUnderLine(true);     // 设定开启下划线
+        verTextView.setUnderLineColor(Color.RED); // 设定下划线颜色
+        verTextView.setUnderLineWidth(3);         // 设定下划线宽度
+        verTextView.setUnderLineSpacing(10);      // 设定下划线到字的间距
+        verTextView.setTextStartAlign(VerTextView.RIGHT); // 从右侧或左侧开始排版
+        verTextView.setTextColor(color)           // 设定字体颜色
+        ...
+```
+
 ***
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
