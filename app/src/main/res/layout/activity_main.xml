@@ -28,4 +28,14 @@
         android:text="阅读ReaderView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/markdown_button"
+        android:text="渲染MarkDownView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/vertextview"
+        android:text="竖行排版VerTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

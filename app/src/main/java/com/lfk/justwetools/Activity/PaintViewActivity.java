@@ -1,4 +1,4 @@
-package com.lfk.justwetools;
+package com.lfk.justwetools.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,6 +15,7 @@ import com.lfk.justwetools.PaintIt.OnPathListener;
 import com.lfk.justwetools.PaintIt.PaintView;
 import com.lfk.justwetools.PaintIt.PathNode;
 import com.lfk.justwetools.PaintIt.UserInfo;
+import com.lfk.justwetools.R;
 
 import java.io.File;
 

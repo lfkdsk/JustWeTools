@@ -1,4 +1,4 @@
-package com.lfk.justwetools;
+package com.lfk.justwetools.Activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -16,6 +16,7 @@ import com.lfk.justwetools.FileExplorer.FileExplorer;
 import com.lfk.justwetools.FileExplorer.OnFileChosenListener;
 import com.lfk.justwetools.FileExplorer.OnPathChangedListener;
 import com.lfk.justwetools.Proportionview.ProportionView;
+import com.lfk.justwetools.R;
 
 
 public class ExplorerActivity extends ActionBarActivity {

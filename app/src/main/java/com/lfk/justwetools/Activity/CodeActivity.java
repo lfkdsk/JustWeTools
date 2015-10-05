@@ -1,4 +1,4 @@
-package com.lfk.justwetools;
+package com.lfk.justwetools.Activity;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.lfk.justwetools.CodeView.CodeView;
+import com.lfk.justwetools.R;
 
 import java.io.File;
 

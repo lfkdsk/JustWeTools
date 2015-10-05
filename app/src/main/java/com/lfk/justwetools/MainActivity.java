@@ -9,6 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.lfk.justwetools.Activity.CodeActivity;
+import com.lfk.justwetools.Activity.EditActivity;
+import com.lfk.justwetools.Activity.ExplorerActivity;
+import com.lfk.justwetools.Activity.PaintViewActivity;
+import com.lfk.justwetools.Activity.ReadActivity;
+import com.lfk.justwetools.Activity.VerTextActivity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -32,6 +39,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         findViewById(R.id.explorerview_button).setOnClickListener(this);
         findViewById(R.id.codeview_button).setOnClickListener(this);
         findViewById(R.id.readerview_button).setOnClickListener(this);
+        findViewById(R.id.markdown_button).setOnClickListener(this);
+        findViewById(R.id.vertextview).setOnClickListener(this);
     }
 
     @Override
@@ -106,7 +115,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 intent.setData(Uri.parse(FILE_PATH + "/" + READ_FILE_NAME));
                 intent.setClass(MainActivity.this, ReadActivity.class);
                 break;
-
+            case R.id.markdown_button:
+                intent.setClass(MainActivity.this, EditActivity.class);
+                break;
+            case R.id.vertextview:
+                intent.setClass(MainActivity.this, VerTextActivity.class);
+                break;
         }
         startActivity(intent);
     }

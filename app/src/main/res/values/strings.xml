@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">JustWeTools</string>
-
+    <string name="poem">我真是 \n日了 \n狗了。</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_paint_view">PaintViewActivity</string>
     <string name="title_activity_explorer">ExplorerActivity</string>
     <string name="title_activity_code">CodeActivity</string>
     <string name="title_activity_read">ReadActivity</string>
+    <string name="title_activity_edit">EditActivity</string>
+    <string name="title_activity_mark_down">MarkDownActivity</string>
+    <string name="title_activity_ver_text">VerTextActivity</string>
 </resources>

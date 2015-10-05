@@ -1,4 +1,4 @@
-package com.lfk.justwetools;
+package com.lfk.justwetools.Activity;
 
 import android.app.Activity;
 import android.net.Uri;
