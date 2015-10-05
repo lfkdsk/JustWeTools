@@ -311,6 +311,9 @@ public class VerTextView extends View {
                 break;
         }
     }
+    public  void setTextColor(int color) {
+        paint.setColor(color);
+    }
 
     public void setIsOpenUnderLine(boolean isOpenUnderLine) {
         IsOpenUnderLine = isOpenUnderLine;
