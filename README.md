@@ -268,6 +268,7 @@ Item的点击事件：
             finish();
         setContentView(readView);
 ```  
+***  
 
 * `MarkDownView`支持MarkDown语法的渲染器:  
   * 基于WebView的MarkDown渲染器  
@@ -276,7 +277,33 @@ Item的点击事件：
 
 ### 效果图:  
 ![markdown](https://github.com/lfkdsk/JustWeTools/blob/master/picture/markdown.png)  
-  
+* 使用基础功能:  
+``` xml
+    <com.lfk.justwetools.MarkDown.MarkDownView
+        android:id="@+id/markdownview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.lfk.justwetools.MarkDown.MarkDownView>
+```
+并添加:  
+``` java
+        MarkDownView markDownView = (MarkDownView)findViewById(R.id.markdownview);
+        if(getIntent().getStringExtra("str") != null){
+            markDownView.setStringSource(getIntent().getStringExtra("str"));
+        }
+```
+* 如果需要打开文件时调用请修改manifest和：  
+``` java
+        File dir = null;
+        Uri fileUri = getIntent().getData();
+        if (fileUri != null) {
+            dir = new File(fileUri.getPath());
+        }
+
+        if (dir != null) {
+            markDownView.setDirSource(dir);
+        }
+```
 ***
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
