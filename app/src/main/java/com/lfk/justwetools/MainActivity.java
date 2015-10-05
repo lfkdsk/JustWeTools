@@ -1,10 +1,13 @@
 package com.lfk.justwetools;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +27,8 @@ import java.io.InputStream;
 
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener{
-    private  final int BUFFER_SIZE = 400000;
+    private LayoutInflater inflater;
+    private final int BUFFER_SIZE = 400000;
     public static final String FILE_NAME = "codeview.java";
     public static final String READ_FILE_NAME = "exm.txt";
     public static final String PACKAGE_NAME = "com.lfk.justwetools";
@@ -35,6 +39,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        inflater = LayoutInflater.from(this);
         findViewById(R.id.paintview_button).setOnClickListener(this);
         findViewById(R.id.explorerview_button).setOnClickListener(this);
         findViewById(R.id.codeview_button).setOnClickListener(this);
@@ -58,7 +63,19 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.about) {
+            View view = inflater.inflate(R.layout.text_item,null);
+            AlertDialog.Builder builder =
+                    new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("关于JustWeTools")
+                    .setView(view)
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+            builder.show();
             return true;
         }
 
