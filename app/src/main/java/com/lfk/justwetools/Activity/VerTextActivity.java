@@ -16,13 +16,13 @@ public class VerTextActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_text);
         VerTextView verTextView = (VerTextView)findViewById(R.id.vertextview);
-        verTextView.setFontSize(40);
+        verTextView.setFontSize(100);
         verTextView.setText(getResources().getString(R.string.poem));
 
         VerTextView verTextView1 = (VerTextView)findViewById(R.id.vertextview1);
         verTextView1.setText(getResources().getString(R.string.poem));
         verTextView1.setIsOpenUnderLine(true);
-        verTextView1.setFontSize(50);
+        verTextView1.setFontSize(100);
         verTextView1.setUnderLineColor(Color.RED);
         verTextView1.setUnderLineWidth(3);
         verTextView1.setUnderLineSpacing(10);
