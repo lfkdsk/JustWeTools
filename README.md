@@ -9,6 +9,7 @@
    * `ExplorerView`文件管理器  
    * `ReadView`小说阅读器  
    * `MarkDownView`支持MarkDown语法的文字渲染器  
+   * `VerTextView`支持竖行排版/下划线的TextView  
    
 
 
