@@ -1,5 +1,5 @@
 # JustWeTools - Some useful tools
-![logo](http://www.imgjav.com/images/justwe97bd9.png)
+![logo](https://github.com/lfkdsk/JustWeTools/blob/master/picture/justwe.png)
 
 ##JustWe 现在有哪些模块?  
 
@@ -275,7 +275,7 @@ Item的点击事件：
   * 调用接口和`CodeView`保持一致使用简便  
 
 ### 效果图:  
-![markdown]()
+![markdown](https://github.com/lfkdsk/JustWeTools/blob/master/picture/markdown.png)  
   
 ***
 ##有问题反馈
