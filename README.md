@@ -333,7 +333,7 @@ Item的点击事件：
         verTextView.setUnderLineWidth(3);         // 设定下划线宽度
         verTextView.setUnderLineSpacing(10);      // 设定下划线到字的间距
         verTextView.setTextStartAlign(VerTextView.RIGHT); // 从右侧或左侧开始排版
-        verTextView.setTextColor(color)           // 设定字体颜色
+        verTextView.setTextColor(color);           // 设定字体颜色
         ...
 ```
 
