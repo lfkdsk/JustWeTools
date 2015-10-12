@@ -59,6 +59,7 @@ public class PageFactory {
 		mNumPaint.setTypeface(typeface);
 		mNumPaint.setColor(Color.GRAY);
 	}
+
 	public void openBook(String path, int[] position){
 		try {
 			File file = new File(path);
@@ -101,6 +102,7 @@ public class PageFactory {
 			canvas.drawText(mTime , mWidth - marginWeight - strLen, mHeight - marginHeight, mNumPaint);
 		}
 	}
+
 	private void pageUp() {
 		// TODO Auto-generated method stub
 		String strParagraph = "";
@@ -138,6 +140,7 @@ public class PageFactory {
 			m_mbBufEndPos = m_mbBufBeginPos;
 		}
 	}	
+
 	private Vector<String> pageDown() {
 		// TODO Auto-generated method stub
 		String strParagraph = "";
@@ -166,13 +169,13 @@ public class PageFactory {
 				try {
 					m_mbBufEndPos -= (strParagraph).getBytes("GBK").length;
 				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		}
 		return lines;
 	}
+
 	private byte[] readParagraphForward(int m_mbBufPos) {
 		// TODO Auto-generated method stub
 		byte b0, b1 ;
@@ -190,8 +193,8 @@ public class PageFactory {
 		}
 		return buf;
 	}
+
 	private byte[] readParagraphBack(int m_mbBufBeginPos) {
-		// TODO Auto-generated method stub
 		byte b0, b1 ;
 		int i = m_mbBufBeginPos -1 ;
 		while(i > 0){
@@ -209,6 +212,7 @@ public class PageFactory {
 		}
 		return buf;
 	}
+
 	public void nextPage() {
 		// TODO Auto-generated method stub
 		if(m_mbBufEndPos >= m_mpBufferLen){
@@ -221,7 +225,7 @@ public class PageFactory {
 	}
 	public void prePage() {
 		// TODO Auto-generated method stub
-		if(m_mbBufBeginPos<=0){
+		if(m_mbBufBeginPos <= 0){
 			return;
 		}
 		m_lines.clear();
