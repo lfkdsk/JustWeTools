@@ -3,12 +3,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.lfk.justwetools.Activity.ExplorerActivity">
-    <com.lfk.justwetools.Proportionview.ProportionView
+    <com.lfk.justwetools.View.Proportionview.ProportionView
         android:id="@+id/pv"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="30dp" />
-    <com.lfk.justwetools.FileExplorer.FileExplorer
+    <com.lfk.justwetools.View.FileExplorer.FileExplorer
         android:id="@+id/ex"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

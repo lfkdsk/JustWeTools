@@ -12,10 +12,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
-import com.lfk.justwetools.FileExplorer.FileExplorer;
-import com.lfk.justwetools.FileExplorer.OnFileChosenListener;
-import com.lfk.justwetools.FileExplorer.OnPathChangedListener;
-import com.lfk.justwetools.Proportionview.ProportionView;
+import com.lfk.justwetools.View.FileExplorer.FileExplorer;
+import com.lfk.justwetools.View.FileExplorer.OnFileChosenListener;
+import com.lfk.justwetools.View.FileExplorer.OnPathChangedListener;
+import com.lfk.justwetools.View.Proportionview.ProportionView;
 import com.lfk.justwetools.R;
 
 

@@ -1,4 +1,4 @@
-package com.lfk.justwetools.PaintIt;
+package com.lfk.justwetools.View.PaintIt;
 
 import android.content.ContentResolver;
 import android.content.Context;

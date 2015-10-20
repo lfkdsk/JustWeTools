@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.lfk.justwetools.CodeView.CodeView;
+import com.lfk.justwetools.View.CodeView.CodeView;
 import com.lfk.justwetools.R;
 
 import java.io.File;

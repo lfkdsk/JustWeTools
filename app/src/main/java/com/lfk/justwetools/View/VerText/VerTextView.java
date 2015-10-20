@@ -1,4 +1,4 @@
-package com.lfk.justwetools.VerText;
+package com.lfk.justwetools.View.VerText;
 
 import android.content.Context;
 import android.graphics.Canvas;

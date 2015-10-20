@@ -10,8 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lfk.basicutils.R;
-
+import com.lfk.justwetools.R;
 /**
  * 简化Toast的定制工具类
  * @author liufengkai

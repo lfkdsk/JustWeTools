@@ -1,4 +1,4 @@
-package com.lfk.justwetools.CodeView;
+package com.lfk.justwetools.View.CodeView;
 
 import android.app.ProgressDialog;
 import android.content.Context;

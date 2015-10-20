@@ -92,7 +92,7 @@
 ####2.1 添加xml：
     
 ``` xml
-    <com.lfk.justwetools.CodeView.CodeView
+    <com.lfk.justwetools.View.CodeView.CodeView
         android:id="@+id/mcodeview"
         android:layerType="hardware"
         android:layout_width="match_parent"
@@ -152,7 +152,7 @@
 
 ####3.1 添加xml：
 ``` xml
-    <com.lfk.justwetools.FileExplorer.FileExplorer
+    <com.lfk.justwetools.View.FileExplorer.FileExplorer
         android:id="@+id/ex"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -213,7 +213,7 @@ Item的点击事件：
 ####3.3 添加xml：
 
 ``` xml
-    <com.lfk.justwetools.Proportionview.ProportionView
+    <com.lfk.justwetools.View.Proportionview.ProportionView
         android:id="@+id/pv"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
@@ -279,11 +279,11 @@ Item的点击事件：
 ![markdown](https://github.com/lfkdsk/JustWeTools/blob/master/picture/markdown.png)  
 * 使用基础功能:  
 ``` xml
-    <com.lfk.justwetools.MarkDown.MarkDownView
+    <com.lfk.justwetools.View.MarkDown.MarkDownView
         android:id="@+id/markdownview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </com.lfk.justwetools.MarkDown.MarkDownView>
+    </com.lfk.justwetools.View.MarkDown.MarkDownView>
 ```
 并添加:  
 ``` java
@@ -315,7 +315,7 @@ Item的点击事件：
 ![vertextview](https://github.com/lfkdsk/JustWeTools/blob/master/picture/VerTextView.png)  
 * 使用基础功能:  
 ``` xml
-    <com.lfk.justwetools.VerText.VerTextView
+    <com.lfk.justwetools.View.VerText.VerTextView
         android:id="@+id/vertextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

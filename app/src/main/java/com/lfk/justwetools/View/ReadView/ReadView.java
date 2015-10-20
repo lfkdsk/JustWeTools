@@ -1,4 +1,4 @@
-package com.lfk.justwetools.ReadView;
+package com.lfk.justwetools.View.ReadView;
 
 import android.content.Context;
 import android.content.SharedPreferences;

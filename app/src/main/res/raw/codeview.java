@@ -10,7 +10,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.lfk.justwetools.CodeView.OnCodeChangedListener;
+import com.lfk.justwetools.View.CodeView.OnCodeChangedListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

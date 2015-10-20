@@ -1,4 +1,4 @@
-package com.lfk.justwetools.FileExplorer;
+package com.lfk.justwetools.View.FileExplorer;
 
 import android.app.AlertDialog;
 import android.content.Context;

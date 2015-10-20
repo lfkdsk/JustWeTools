@@ -1,4 +1,4 @@
-package com.lfk.justwetools.PaintIt;
+package com.lfk.justwetools.View.PaintIt;
 import android.app.Application;
 
 import java.util.ArrayList;

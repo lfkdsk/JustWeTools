@@ -1,4 +1,4 @@
-package com.lfk.justwetools.PaintIt;
+package com.lfk.justwetools.View.PaintIt;
 
 /**
  * Created by liufengkai on 15/8/26.

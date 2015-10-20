@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.lfk.justwetools.MarkDown.MarkDownView;
+import com.lfk.justwetools.View.MarkDown.MarkDownView;
 import com.lfk.justwetools.R;
 
 import java.io.File;

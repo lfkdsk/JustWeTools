@@ -1,4 +1,4 @@
-package com.lfk.justwetools.Proportionview;
+package com.lfk.justwetools.View.Proportionview;
 
 import android.content.Context;
 import android.graphics.Canvas;
