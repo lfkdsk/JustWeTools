@@ -206,14 +206,18 @@ public class VerTextView extends View {
     private int measureHeight(int measureSpec) {
         int specMode = MeasureSpec.getMode(measureSpec);
         int specSize = MeasureSpec.getSize(measureSpec);
-        int result = 500;
+        float[] widths = new float[1];
+        // 获取单个汉字的宽度
+        paint.getTextWidths("蛤", widths);
+        int result = (int)widths[0] * maxCountInOneLine;
         if ((specMode == MeasureSpec.AT_MOST)||(specMode == MeasureSpec.EXACTLY)) {
             // 分别对应match_parent和wrap_content
             result = specSize;
         }
-        Log.e("result",result+"");
+//        Log.e("result",result+"");
         // 设置文本高度
         mTextHeight = result;
+//        mTextHeight = (int)widths[0] * maxCountInOneLine;
         return result;
     }
 
