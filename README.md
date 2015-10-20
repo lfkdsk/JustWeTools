@@ -11,27 +11,35 @@
    * `MarkDownView`支持MarkDown语法的文字渲染器  
    * `VerTextView`支持竖行排版/下划线的TextView  
    
-
+* Utils工具类
+   * `AlarmUtil`闹钟事件工具类
+   * `MPUtils`短信电话工具类
+   * `NetUtils`网络状态工具类
+   * `PicUtils`图片处理工具类
+   * `ServiceUtils`服务工具类
+   * `SpUtils`Sp简化工具类（`可存储list和map`）
+   * `ToastUtils`Toast定制工具类
+   * `ValidatorsUtils`正则表达式处理类
 
 ##模块如何使用：
 * 将Demo作为library加入项目，或是直接将代码拷入
 
 ##JustWe 模块介绍:  
 
-* View自定义控件:  
+###View自定义控件:  
 * `PaintView`画图工具:
     *  可直接使用设定按钮来实现已拥有的方法，且拓展性强
     *  基础功能：更换颜色、更换橡皮、以及更换橡皮和笔的粗细、清屏、倒入图片
     *  `特殊功能`：`保存画笔轨迹帧动画`、帧动画导入导出、ReDo和UnDo
 
-###效果图：
+####效果图：
 
 ![p1](https://github.com/lfkdsk/JustWeTools/blob/master/picture/gif.gif)
 ![p2](https://github.com/lfkdsk/JustWeTools/blob/master/picture/io.gif)
 
 * 使用基础功能只需要： 
 
-####1.1 添加xml：
+#####1.1 添加xml：
 
 ```xml
    <com.lfk.justwetools.View.PaintIt.PaintView
@@ -39,7 +47,7 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent" />
 ```
-####1.2 在activity里找到：
+#####1.2 在activity里找到：
 
 ``` java
     paintView = (PaintView)findViewById(R.id.paint);
@@ -82,13 +90,13 @@
     * 实现代码高亮，暗色主题 
     * 代码及时修改
 
-###效果图：
+####效果图：
 ![p3](https://github.com/lfkdsk/JustWeTools/blob/master/picture/accomplish.png)
 ![p4](https://github.com/lfkdsk/JustWeTools/blob/master/picture/edit.png)
 
 * 使用基础功能只需要：
 
-####2.1 添加xml：
+#####2.1 添加xml：
     
 ``` xml
     <com.lfk.justwetools.View.CodeView.CodeView
@@ -97,7 +105,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 ```
-####2.2 在Activity中获取路径：
+#####2.2 在Activity中获取路径：
 
 
 ``` java
@@ -119,7 +127,7 @@
 
 如果是手动复制代码的话，需要复制assests文件夹下的js文件。
 
-####2.3 编辑修改：
+#####2.3 编辑修改：
 ``` java
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -143,20 +151,20 @@
     * 可拓展性强
     * 可进行文件类型分析
 
-### 效果图：
+####效果图：
 ![p5](https://github.com/lfkdsk/JustWeTools/blob/master/picture/explorer1.png)
 ![p6](https://github.com/lfkdsk/JustWeTools/blob/master/picture/explorer2.png)
 
 * 使用基础功能
 
-####3.1 添加xml：
+#####3.1 添加xml：
 ``` xml
     <com.lfk.justwetools.View.FileExplorer.FileExplorer
         android:id="@+id/ex"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 ```
-####3.2 在Activity里面：
+#####3.2 在Activity里面：
 
 ``` java
         fileExplorer = (FileExplorer)findViewById(R.id.ex);
@@ -209,7 +217,7 @@ Item的点击事件：
 * `高级功能`: 根据文件夹内的各种文件类型的大小比例，分析比例图，不建议在sd卡根目录使用
     内容过多反应较慢
 
-####3.3 添加xml：
+#####3.3 添加xml：
 
 ``` xml
     <com.lfk.justwetools.View.Proportionview.ProportionView
@@ -219,7 +227,7 @@ Item的点击事件：
         android:layout_height="30dp" />
 ```
 
-####3.4 在Activity中添加：
+#####3.4 在Activity中添加：
 ``` java
     final ProportionView view = (ProportionView) findViewById(R.id.pv);
 ```
@@ -244,7 +252,7 @@ Item的点击事件：
     * 可更换字体、字号、字颜色 
     * 拓展性强  
 
-### 效果图：  
+#### 效果图：  
 ![p7](https://github.com/lfkdsk/JustWeTools/blob/master/picture/readbook.png)  
 
 * 使用基础功能只需要：
@@ -274,7 +282,7 @@ Item的点击事件：
   * 支持标准化的MarkDown语法
   * 调用接口和`CodeView`保持一致使用简便  
 
-### 效果图:  
+#### 效果图:  
 ![markdown](https://github.com/lfkdsk/JustWeTools/blob/master/picture/markdown.png)  
 * 使用基础功能:  
 ``` xml
@@ -310,7 +318,7 @@ Item的点击事件：
   * 添加了下划线功能，开启简便，下划线粗细、颜色、间距均可自定义
   * 接口调用方式与TextView相似，使用简便  
 
-### 效果图:  
+#### 效果图:  
 ![vertextview](https://github.com/lfkdsk/JustWeTools/blob/master/picture/VerTextView.png)  
 * 使用基础功能:  
 ``` xml
