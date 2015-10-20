@@ -34,11 +34,10 @@
 ####1.1 添加xml：
 
 ```xml
-    <com.lfk.drawapictiure.PaintView
-        android:id="@+id/paint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         />
+   <com.lfk.justwetools.View.PaintIt.PaintView
+       android:id="@+id/paintView"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent" />
 ```
 ####1.2 在activity里找到：
 
