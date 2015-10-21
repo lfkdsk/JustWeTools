@@ -148,7 +148,7 @@ public class PaintView extends View {
         mEraserPaint.setStrokeJoin(Paint.Join.ROUND);
         mEraserPaint.setStrokeCap(Paint.Cap.SQUARE);
         // The most important
-        mEraserPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+        mEraserPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     }
 
     // while size is changed
