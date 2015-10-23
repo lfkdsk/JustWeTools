@@ -1,0 +1,14 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lfk.justwetools.Activity.NewPaintActivity">
+    <com.lfk.justwetools.View.NewPaint.PaintView
+        android:id="@+id/paint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <Button
+        android:text="X"
+        android:id="@+id/clear_it"
+        android:layout_width="48dp"
+        android:layout_height="48dp" />
+</RelativeLayout>

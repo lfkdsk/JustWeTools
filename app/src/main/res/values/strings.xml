@@ -4,7 +4,7 @@
     <string name="info">JustWeTools是一个开源的控件库希望提供一些有趣的小控件和工具</string>
     <string name="blog">博客地址: http://www.cnblogs.com/lfk-dsk/</string>
     <string name="github">github地址: https://github.com/lfkdsk/JustWeTools</string>
-    <string name="items">PaintView画图工具\nCodeView代码编辑\nExplorerView文件管理器\nReadView小说阅读器\nMarkDownView支持MarkDown语法的文字渲染器\nVerTextView支持竖行排版/下划线的TextView</string>
+    <string name="items">PaintView画图工具\nCodeView代码编辑\nExplorerView文件管理器\nReadView小说阅读器\nMarkDownView支持MarkDown语法的文字渲染器\nVerTextView支持竖行排版/下划线的TextView\n重构版NewPaintView加入绘制各种图形</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_paint_view">PaintViewActivity</string>
@@ -14,4 +14,5 @@
     <string name="title_activity_edit">EditActivity</string>
     <string name="title_activity_mark_down">MarkDownActivity</string>
     <string name="title_activity_ver_text">VerTextActivity</string>
+    <string name="title_activity_new_paint">NewPaintActivity</string>
 </resources>

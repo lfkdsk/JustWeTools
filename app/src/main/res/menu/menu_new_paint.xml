@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.lfk.justwetools.Activity.NewPaintActivity">
+    <item android:id="@+id/action_settings" android:title="选择模式"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>

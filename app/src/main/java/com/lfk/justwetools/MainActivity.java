@@ -15,6 +15,7 @@ import android.view.View;
 import com.lfk.justwetools.Activity.CodeActivity;
 import com.lfk.justwetools.Activity.EditActivity;
 import com.lfk.justwetools.Activity.ExplorerActivity;
+import com.lfk.justwetools.Activity.NewPaintActivity;
 import com.lfk.justwetools.Activity.PaintViewActivity;
 import com.lfk.justwetools.Activity.ReadActivity;
 import com.lfk.justwetools.Activity.VerTextActivity;
@@ -46,6 +47,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         findViewById(R.id.readerview_button).setOnClickListener(this);
         findViewById(R.id.markdown_button).setOnClickListener(this);
         findViewById(R.id.vertextview).setOnClickListener(this);
+        findViewById(R.id.newPaint).setOnClickListener(this);
     }
 
     @Override
@@ -137,6 +139,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 break;
             case R.id.vertextview:
                 intent.setClass(MainActivity.this, VerTextActivity.class);
+                break;
+            case R.id.newPaint:
+                intent.setClass(MainActivity.this, NewPaintActivity.class);
                 break;
         }
         startActivity(intent);
