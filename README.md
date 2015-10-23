@@ -4,7 +4,7 @@
 ##JustWe 现在有哪些模块?  
 
 * View自定义控件  
-   * `PaintView`画图工具  
+   * `PaintView`画图工具(包含重构新版)  
    * `CodeView`代码编辑  
    * `ExplorerView`文件管理器  
    * `ReadView`小说阅读器  
@@ -12,14 +12,14 @@
    * `VerTextView`支持竖行排版/下划线的TextView  
    
 * Utils工具类
-   * `AlarmUtil`闹钟事件工具类
-   * `MPUtils`短信电话工具类
-   * `NetUtils`网络状态工具类
-   * `PicUtils`图片处理工具类
-   * `ServiceUtils`服务工具类
-   * `SpUtils`Sp简化工具类（`可存储list和map`）
-   * `ToastUtils`Toast定制工具类
-   * `ValidatorsUtils`正则表达式处理类
+   * `AlarmUtil` 闹钟事件工具类
+   * `MPUtils` 短信电话工具类
+   * `NetUtils` 网络状态工具类
+   * `PicUtils` 图片处理工具类
+   * `ServiceUtils` 服务工具类
+   * `SpUtils` Sp简化工具类（`可存储list和map`）
+   * `ToastUtils` Toast定制工具类
+   * `ValidatorsUtils` 正则表达式处理类
 
 ##模块如何使用：
 * 将Demo作为library加入项目，或是直接将代码拷入
@@ -31,6 +31,7 @@
     *  可直接使用设定按钮来实现已拥有的方法，且拓展性强
     *  基础功能：更换颜色、更换橡皮、以及更换橡皮和笔的粗细、清屏、倒入图片
     *  `特殊功能`：`保存画笔轨迹帧动画`、帧动画导入导出、ReDo和UnDo
+    *  重构版本：提供笔刷类型基类DrawBase，可继承此类制作笔刷  
 
 ####效果图：
 
