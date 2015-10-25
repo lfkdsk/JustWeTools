@@ -53,6 +53,10 @@ public class DrawBase {
         mEraserPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     }
 
+    public void setmPaintWidth(float width){
+        mPaint.setStrokeWidth(width);
+    }
+
     public void Touch_Down(float x, float y){
 
     }

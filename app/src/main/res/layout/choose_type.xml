@@ -10,6 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RadioButton
+            android:id="@+id/draw_path"
+            android:text="线条"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <RadioButton
             android:id="@+id/draw_rect"
             android:text="正方形"
             android:layout_width="match_parent"

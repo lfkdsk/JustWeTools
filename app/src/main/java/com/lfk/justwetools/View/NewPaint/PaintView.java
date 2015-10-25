@@ -26,6 +26,7 @@ import com.lfk.justwetools.R;
 import com.lfk.justwetools.View.NewPaint.Graph.DrawBase;
 import com.lfk.justwetools.View.NewPaint.Graph.DrawCircle;
 import com.lfk.justwetools.View.NewPaint.Graph.DrawLine;
+import com.lfk.justwetools.View.NewPaint.Graph.DrawPath;
 import com.lfk.justwetools.View.NewPaint.Graph.DrawRect;
 
 import org.json.JSONArray;
@@ -475,6 +476,14 @@ public class PaintView extends View {
 
 	@Override
 	public boolean onTouchEvent(@NonNull MotionEvent event) {
+		float l = event.getPressure() * 500;
+		Log.e("笔刷值", l * 500 + "");
+		if(event.getPressure() - l > 28431){
+			l = l + 10000;
+		}else if(event.getPressure() - l < -28431){
+			l = l - 10000;
+		}
+		drawBase.setmPaintWidth((float)Math.sqrt(l));
 		if(!isShowing()) {
 			float x = event.getX();
 			float y = event.getY();
@@ -722,6 +731,9 @@ public class PaintView extends View {
 
 	public void setDrawBase(int data){
 		switch (data){
+			case R.id.draw_path:
+				setDrawBase(new DrawPath(mCanvas));
+				break;
 			case R.id.draw_rect:
 				setDrawBase(new DrawRect(mCanvas));
 				break;

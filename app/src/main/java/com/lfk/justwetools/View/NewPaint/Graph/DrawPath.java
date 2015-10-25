@@ -30,11 +30,11 @@ public class DrawPath extends DrawBase {
     public void Touch_Up() {
         super.Touch_Up();
         mPath.lineTo(mX, mY);
-        if(PaintView.IsPaint) {
-            mCanvas.drawPath(mPath, mPaint);
-        }else {
-            mCanvas.drawPath(mPath, mEraserPaint);
-        }
+//        if(PaintView.IsPaint) {
+//            mCanvas.drawPath(mPath, mPaint);
+//        }else {
+//            mCanvas.drawPath(mPath, mEraserPaint);
+//        }
         mPath.reset();
     }
 
@@ -50,6 +50,11 @@ public class DrawPath extends DrawBase {
 //            if(IsRecordPath) {
 //                listener.addNodeToPath(x, y, MotionEvent.ACTION_MOVE, IsPaint);
 //            }
+            if(PaintView.IsPaint) {
+                mCanvas.drawPath(mPath, mPaint);
+            }else {
+                mCanvas.drawPath(mPath, mEraserPaint);
+            }
         }
     }
 
