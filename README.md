@@ -22,7 +22,8 @@
    * `ValidatorsUtils` 正则表达式处理类
 
 ##模块如何使用：
-* 将Demo作为library加入项目，或是直接将代码拷入
+* 将Demo作为library加入项目，或是直接将代码拷入  
+* 下载demo ：
 
 ##JustWe 模块介绍:  
 
