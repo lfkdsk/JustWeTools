@@ -77,7 +77,7 @@ public class VerTextView extends View {
         // 默认文字颜色
         paint.setColor(Color.BLACK);
 
-        if(IsOpenUnderLine) {
+        if (IsOpenUnderLine) {
             mPath = new Path();
             mPaint = new Paint();
             mPaint.setColor(underLineColor);
@@ -102,7 +102,7 @@ public class VerTextView extends View {
         // 默认文字颜色
         paint.setColor(Color.BLACK);
 
-        if(IsOpenUnderLine) {
+        if (IsOpenUnderLine) {
             mPath = new Path();
             mPaint = new Paint();
             mPaint.setColor(underLineColor);
@@ -117,10 +117,11 @@ public class VerTextView extends View {
         try {
             mFontSize = Float.parseFloat(attrs.getAttributeValue(null, "textSize"));
         } catch (Exception e) {
-            Log.e("get font size","error");
+            Log.e("get font size", "error");
             mFontSize = 40;
         }
     }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -137,7 +138,7 @@ public class VerTextView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int measuredHeight = measureHeight(heightMeasureSpec);
         if (mTextWidth == 0) getTextSize();
-        Log.e("measuredHeight",measuredHeight+"");
+        Log.e("measuredHeight", measuredHeight + "");
         setMeasuredDimension(mTextWidth, measuredHeight);
 //        if (oldwidth != getWidth()) {
 //            oldwidth = getWidth();
@@ -145,8 +146,14 @@ public class VerTextView extends View {
 //        }
     }
 
+    /**
+     * 绘制
+     *
+     * @param canvas
+     * @param text
+     */
     private void draw(Canvas canvas, String text) {
-        if(IsOpenUnderLine) {
+        if (IsOpenUnderLine) {
             mPath = new Path();
             mPaint = new Paint();
             mPaint.setColor(underLineColor);
@@ -164,7 +171,7 @@ public class VerTextView extends View {
             StringItem = text.charAt(i);
             if (StringItem == '\n') {
                 // 换行
-                if(IsOpenUnderLine)
+                if (IsOpenUnderLine)
                     drawUnderLine(canvas);
                 if (textStartAlign == Paint.Align.LEFT) {
                     mTextPosX += mLineWidth;
@@ -175,7 +182,7 @@ public class VerTextView extends View {
             } else {
                 mTextPosY += mFontHeight;
                 if (mTextPosY > this.mTextHeight) {
-                    if(IsOpenUnderLine)
+                    if (IsOpenUnderLine)
                         drawUnderLine(canvas);
                     if (textStartAlign == Paint.Align.LEFT) {
                         mTextPosX += mLineWidth;
@@ -186,8 +193,8 @@ public class VerTextView extends View {
                     mTextPosY = 0;
                 } else {
                     canvas.drawText(String.valueOf(StringItem), mTextPosX, mTextPosY, paint);
-                    if(i == this.TextLength - 1){
-                        if(IsOpenUnderLine)
+                    if (i == this.TextLength - 1) {
+                        if (IsOpenUnderLine)
                             drawUnderLine(canvas);
                     }
                 }
@@ -195,26 +202,38 @@ public class VerTextView extends View {
         }
     }
 
-    private void drawUnderLine(Canvas canvas){
+    /**
+     * 绘制下划线
+     *
+     * @param canvas
+     */
+    private void drawUnderLine(Canvas canvas) {
         mPath.moveTo(mTextPosX - mLineWidthWithoutUnderLine / 2 - underLineSpacing, 0);
-        mPath.lineTo(mTextPosX - mLineWidthWithoutUnderLine/2 - underLineSpacing , mTextPosY);
+        mPath.lineTo(mTextPosX - mLineWidthWithoutUnderLine / 2 - underLineSpacing, mTextPosY);
         canvas.drawPath(mPath, mPaint);
         mPath.reset();
     }
 
-
+    /**
+     * 计算控件的高度
+     *
+     * @param measureSpec
+     * @return
+     */
     private int measureHeight(int measureSpec) {
         int specMode = MeasureSpec.getMode(measureSpec);
         int specSize = MeasureSpec.getSize(measureSpec);
         float[] widths = new float[1];
         // 获取单个汉字的宽度
         paint.getTextWidths("蛤", widths);
-        int result = (int)widths[0] * maxCountInOneLine;
-        if ((specMode == MeasureSpec.AT_MOST)||(specMode == MeasureSpec.EXACTLY)) {
-            // 分别对应match_parent和wrap_content
+        int result = (int) widths[0] * maxCountInOneLine;
+        if (specMode == MeasureSpec.EXACTLY) {
             result = specSize;
+        } else {
+            if (specMode == MeasureSpec.AT_MOST) {
+                result = Math.min(result, specSize);
+            }
         }
-//        Log.e("result",result+"");
         // 设置文本高度
         mTextHeight = result;
 //        mTextHeight = (int)widths[0] * maxCountInOneLine;
@@ -228,7 +247,9 @@ public class VerTextView extends View {
         if (mTextHeight > 0) getTextSize();
     }
 
-    // 计算文字行数和总宽
+    /**
+     * 计算文字行数和总宽
+     */
     private void getTextSize() {
         char StringItem;
         // 每行的字符数所对应的长度
@@ -241,8 +262,8 @@ public class VerTextView extends View {
             paint.getTextWidths("蛤", widths);
             // 计算列宽度
 //            mLineWidth = (int) Math.ceil(widths[0] * 1.2 + 2);
-            mLineWidth = mLineSpacing + (int)widths[0];
-            if(IsOpenUnderLine){
+            mLineWidth = mLineSpacing + (int) widths[0];
+            if (IsOpenUnderLine) {
                 mLineWidthWithoutUnderLine = mLineWidth;
                 mLineWidth += underLineWidth + underLineSpacing;
             }
@@ -268,9 +289,8 @@ public class VerTextView extends View {
                     // 重新读入这个字符，由于h被清空会在下一行进行绘制
                     i--;
                     SizeInOneLine = 0;
-                }
-                else {
-                // 最后一个字符结束再加入一行，否则最后一行显示不全
+                } else {
+                    // 最后一个字符结束再加入一行，否则最后一行显示不全
                     if (i == this.TextLength - 1) {
                         mLineSize++;
                     }
@@ -281,9 +301,9 @@ public class VerTextView extends View {
         // 计算文字总宽度
         mTextWidth = mLineWidth * mLineSize;
         // 重新调整大小
-        measure(mTextWidth , getHeight());
+        measure(mTextWidth, getHeight());
         // 重新绘制容器位置
-        layout(getRight() - mTextWidth , getTop(), getRight(), getBottom());
+        layout(getRight() - mTextWidth, getTop(), getRight(), getBottom());
     }
 
     public void setFontSize(float mFontSize) {
@@ -297,16 +317,31 @@ public class VerTextView extends View {
         this.mHandler = mHandler;
     }
 
+    /**
+     * 设定与下划线的间距
+     *
+     * @param mLineSpacing
+     */
     public void setmLineSpacing(int mLineSpacing) {
         this.mLineSpacing = mLineSpacing;
     }
 
+    /**
+     * 设定一行的最大字数
+     *
+     * @param maxCountInOneLine
+     */
     public static void setMaxCountInOneLine(int maxCountInOneLine) {
         VerTextView.maxCountInOneLine = maxCountInOneLine;
     }
 
+    /**
+     * 设定文字的起始方向
+     *
+     * @param leftOrRight
+     */
     public void setTextStartAlign(int leftOrRight) {
-        switch (leftOrRight){
+        switch (leftOrRight) {
             case RIGHT:
                 textStartAlign = Paint.Align.RIGHT;
                 break;
@@ -315,22 +350,43 @@ public class VerTextView extends View {
                 break;
         }
     }
-    public  void setTextColor(int color) {
+
+    /**
+     * 文本颜色
+     * @param color
+     */
+    public void setTextColor(int color) {
         paint.setColor(color);
     }
 
+    /**
+     * 下划线开关
+     * @param isOpenUnderLine
+     */
     public void setIsOpenUnderLine(boolean isOpenUnderLine) {
         IsOpenUnderLine = isOpenUnderLine;
     }
 
+    /**
+     * 下划线宽度
+     * @param underLineWidth
+     */
     public void setUnderLineWidth(int underLineWidth) {
         this.underLineWidth = underLineWidth;
     }
 
+    /**
+     * 下划线颜色
+     * @param underLineColor
+     */
     public void setUnderLineColor(int underLineColor) {
         this.underLineColor = underLineColor;
     }
 
+    /**
+     * 下划线间距
+     * @param underLineSpacing
+     */
     public void setUnderLineSpacing(int underLineSpacing) {
         this.underLineSpacing = underLineSpacing;
     }
