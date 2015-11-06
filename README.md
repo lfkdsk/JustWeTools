@@ -23,7 +23,7 @@
 
 ##模块如何使用：
 * 将Demo作为library加入项目，或是直接将代码拷入  
-* 下载demo ：
+* 下载demo ：[apk-demo](https://github.com/lfkdsk/JustWeTools/tree/master/demo-apk)  
 
 ##JustWe 模块介绍:  
 
