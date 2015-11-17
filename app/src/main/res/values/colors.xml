@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue" >#5082fa</color>
+    <color name="darkblue">#385baf</color>
+    <color name="white" >#fff</color>
+    <color name="cwhite" >#44ffffff</color>
+    <color name="gray">#aecccccc</color>
+    <color name="black">#000</color>
+    <color name="bgray">#4ccccccc</color>
+    <color name="nocolor">#00000000</color>
+    <color name="code_gray">#272822</color>
+    <color name="gray_text">#838383</color>
+    <color name="choose_button_select">#ffcccccc</color>
+    <color name="pressed_blue">#5f86e5</color>
+    <color name="white_blue">#7d9ae2</color>
+    <color name="gray_touch">#464A4C</color>
+</resources>
