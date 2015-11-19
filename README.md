@@ -4,7 +4,7 @@
 ##JustWe 现在有哪些模块?  
 
 * View自定义控件  
-   * `PaintView`画图工具(包含重构新版)  
+   * `PaintView`画图工具(包含重构压感新版)  
    * `CodeView`代码编辑  
    * `ExplorerView`文件管理器  
    * `ReadView`小说阅读器  
@@ -17,6 +17,8 @@
    * `NetUtils` 网络状态工具类
    * `PicUtils` 图片处理工具类
    * `ServiceUtils` 服务工具类
+   * `ImageHelper` 图型处理类  
+   * `DisplayUtils` 数据转换类
    * `SpUtils` Sp简化工具类（`可存储list和map`）
    * `ToastUtils` Toast定制工具类
    * `ValidatorsUtils` 正则表达式处理类
@@ -347,6 +349,7 @@ Item的点击事件：
 ```
 
 ***
+
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
