@@ -16,8 +16,11 @@ import android.view.View;
  * Created by liufengkai on 15/10/3.
  */
 public class VerTextView extends View {
+    // 绘制方向
     public final int RIGHT = 1;
     public static final int LEFT = 0;
+    // 绘制的最大长度
+    public int MaxInOneLine = 0;
     // 绘制文字画笔
     private Paint paint;
     // 绘制下划线画笔
@@ -139,7 +142,7 @@ public class VerTextView extends View {
         int measuredHeight = measureHeight(heightMeasureSpec);
         if (mTextWidth == 0) getTextSize();
         Log.e("measuredHeight", measuredHeight + "");
-        setMeasuredDimension(mTextWidth, measuredHeight);
+        setMeasuredDimension(mTextWidth, Math.min(measuredHeight, MaxInOneLine));
 //        if (oldwidth != getWidth()) {
 //            oldwidth = getWidth();
 //            if (mHandler != null) mHandler.sendEmptyMessage(LAYOUT_CHANGED);
@@ -275,6 +278,7 @@ public class VerTextView extends View {
 
         // 计算文字行数
         mLineSize = 0;
+        MaxInOneLine = 0;
         for (int i = 0; i < this.TextLength; i++) {
             StringItem = this.text.charAt(i);
             if (StringItem == '\n') {
@@ -290,6 +294,10 @@ public class VerTextView extends View {
                     i--;
                     SizeInOneLine = 0;
                 } else {
+                    if (SizeInOneLine > MaxInOneLine) {
+                        MaxInOneLine = SizeInOneLine;
+                    }
+
                     // 最后一个字符结束再加入一行，否则最后一行显示不全
                     if (i == this.TextLength - 1) {
                         mLineSize++;
@@ -353,6 +361,7 @@ public class VerTextView extends View {
 
     /**
      * 文本颜色
+     *
      * @param color
      */
     public void setTextColor(int color) {
@@ -361,6 +370,7 @@ public class VerTextView extends View {
 
     /**
      * 下划线开关
+     *
      * @param isOpenUnderLine
      */
     public void setIsOpenUnderLine(boolean isOpenUnderLine) {
@@ -369,6 +379,7 @@ public class VerTextView extends View {
 
     /**
      * 下划线宽度
+     *
      * @param underLineWidth
      */
     public void setUnderLineWidth(int underLineWidth) {
@@ -377,6 +388,7 @@ public class VerTextView extends View {
 
     /**
      * 下划线颜色
+     *
      * @param underLineColor
      */
     public void setUnderLineColor(int underLineColor) {
@@ -385,6 +397,7 @@ public class VerTextView extends View {
 
     /**
      * 下划线间距
+     *
      * @param underLineSpacing
      */
     public void setUnderLineSpacing(int underLineSpacing) {
