@@ -10,6 +10,8 @@
    * `ReadView`小说阅读器  
    * `MarkDownView`支持MarkDown语法的文字渲染器  
    * `VerTextView`支持竖行排版/下划线的TextView  
+   * `FlashTextView`仿QQ的流光字体  
+   * `Progress`进度条/环形进度条  
    
 * Utils工具类
    * `AlarmUtil` 闹钟事件工具类
@@ -21,7 +23,7 @@
    * `DisplayUtils` 数据转换类
    * `SpUtils` Sp简化工具类（`可存储list和map`）
    * `ToastUtils` Toast定制工具类
-   * `ValidatorsUtils` 正则表达式处理类
+   * `ValidatorsUtils` 正则表达式处理类  
 
 ##模块如何使用：
 * 将Demo作为library加入项目，或是直接将代码拷入  
@@ -148,8 +150,8 @@
         return super.onOptionsItemSelected(item);
     }
 ```
-***
-
+***  
+  
 * ExplorerView 文件浏览器：
     * 继承自ListView
     * 可拓展性强
