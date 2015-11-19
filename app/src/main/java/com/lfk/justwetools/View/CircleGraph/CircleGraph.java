@@ -36,6 +36,7 @@ public class CircleGraph extends View {
     private int mStartValue = 0;
     private int mCircleColor;
     private int mArcColor;
+    private int ColorSet[] = {0xFFFEDD74, 0xFF82D8EF, 0xFFF76864, 0xFF80BD91, 0xFFFD9FC1, 0xFF};
     private int mArcWidth = 40;
     // 文字
     private String text = null;
@@ -124,7 +125,7 @@ public class CircleGraph extends View {
     }
 
     private int measureHeight(int heightMeasureSpec) {
-        int result = getHeight();
+        int result = 800;
         int specMode = MeasureSpec.getMode(heightMeasureSpec);
         int specSize = MeasureSpec.getSize(heightMeasureSpec);
         if (specMode == MeasureSpec.AT_MOST || specMode == MeasureSpec.EXACTLY) {
@@ -134,7 +135,7 @@ public class CircleGraph extends View {
     }
 
     private int measureWidth(int widthMeasureSpec) {
-        int result = getWidth();
+        int result = 800;
         int specMode = MeasureSpec.getMode(widthMeasureSpec);
         int specSize = MeasureSpec.getSize(widthMeasureSpec);
         if (specMode == MeasureSpec.AT_MOST || specMode == MeasureSpec.EXACTLY) {

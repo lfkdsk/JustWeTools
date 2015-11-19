@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lfk.justwetools" >
+    package="com.lfk.justwetools">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
@@ -12,11 +12,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,16 +28,14 @@
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
             android:name=".Activity.ExplorerActivity"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".Activity.CodeActivity"
             android:label="@string/app_name"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -49,7 +47,7 @@
         <activity
             android:name=".Activity.ReadActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -60,11 +58,10 @@
         </activity>
         <activity
             android:name=".Activity.EditActivity"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".Activity.MarkDownActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -75,12 +72,11 @@
         </activity>
         <activity
             android:name=".Activity.VerTextActivity"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".Activity.NewPaintActivity"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name"></activity>
+        <activity android:name=".Activity.ViewDemoActivity"></activity>
     </application>
 
 </manifest>

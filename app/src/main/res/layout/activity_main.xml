@@ -43,4 +43,9 @@
         android:text="重构版NewPaintView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/viewDemo"
+        android:text="ViewDemo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

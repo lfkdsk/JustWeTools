@@ -19,6 +19,7 @@ import com.lfk.justwetools.Activity.NewPaintActivity;
 import com.lfk.justwetools.Activity.PaintViewActivity;
 import com.lfk.justwetools.Activity.ReadActivity;
 import com.lfk.justwetools.Activity.VerTextActivity;
+import com.lfk.justwetools.Activity.ViewDemoActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,15 +28,16 @@ import java.io.IOException;
 import java.io.InputStream;
 
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener{
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
     private LayoutInflater inflater;
     private final int BUFFER_SIZE = 400000;
     public static final String FILE_NAME = "codeview.java";
     public static final String READ_FILE_NAME = "exm.txt";
     public static final String PACKAGE_NAME = "com.lfk.justwetools";
     public static final String FILE_PATH = "/data"
-            + Environment.getDataDirectory().getAbsolutePath() +"/"
-            + PACKAGE_NAME+ "/bin";
+            + Environment.getDataDirectory().getAbsolutePath() + "/"
+            + PACKAGE_NAME + "/bin";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         findViewById(R.id.markdown_button).setOnClickListener(this);
         findViewById(R.id.vertextview).setOnClickListener(this);
         findViewById(R.id.newPaint).setOnClickListener(this);
+        findViewById(R.id.viewDemo).setOnClickListener(this);
     }
 
     @Override
@@ -66,17 +69,17 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.about) {
-            View view = inflater.inflate(R.layout.text_item,null);
+            View view = inflater.inflate(R.layout.text_item, null);
             AlertDialog.Builder builder =
                     new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("关于JustWeTools")
-                    .setView(view)
-                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+                            .setTitle("关于JustWeTools")
+                            .setView(view)
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
 
-                        }
-                    });
+                                }
+                            });
             builder.show();
             return true;
         }
@@ -84,23 +87,23 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    public void copytext(String name,int type) {
+    public void copytext(String name, int type) {
         try {
             File myDataPath = new File(FILE_PATH);
             if (!myDataPath.exists()) {
                 myDataPath.mkdirs();
             }
-            String file = myDataPath+"/"+name;
+            String file = myDataPath + "/" + name;
             if (!(new File(file).exists())) {
                 InputStream is;
-                if(type == 0) {
+                if (type == 0) {
                     is = this.getResources().openRawResource(R.raw.codeview);
-                }else {
+                } else {
                     is = this.getResources().openRawResource(R.raw.exm);
                 }
                 FileOutputStream fos = new FileOutputStream(file);
                 byte[] buffer = new byte[BUFFER_SIZE];
-                int count = 0 ;
+                int count = 0;
                 while ((count = is.read(buffer)) > 0) {
                     fos.write(buffer, 0, count);
                 }
@@ -117,20 +120,20 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         Intent intent = new Intent();
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.paintview_button:
-                intent.setClass(MainActivity.this,PaintViewActivity.class);
+                intent.setClass(MainActivity.this, PaintViewActivity.class);
                 break;
             case R.id.explorerview_button:
-                intent.setClass(MainActivity.this,ExplorerActivity.class);
+                intent.setClass(MainActivity.this, ExplorerActivity.class);
                 break;
             case R.id.codeview_button:
-                copytext(FILE_NAME,0);
+                copytext(FILE_NAME, 0);
                 intent.setData(Uri.parse(FILE_PATH + "/" + FILE_NAME));
                 intent.setClass(MainActivity.this, CodeActivity.class);
                 break;
             case R.id.readerview_button:
-                copytext(READ_FILE_NAME,1);
+                copytext(READ_FILE_NAME, 1);
                 intent.setData(Uri.parse(FILE_PATH + "/" + READ_FILE_NAME));
                 intent.setClass(MainActivity.this, ReadActivity.class);
                 break;
@@ -142,6 +145,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 break;
             case R.id.newPaint:
                 intent.setClass(MainActivity.this, NewPaintActivity.class);
+                break;
+            case R.id.viewDemo:
+                intent.setClass(MainActivity.this, ViewDemoActivity.class);
                 break;
         }
         startActivity(intent);
