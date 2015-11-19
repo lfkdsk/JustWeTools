@@ -45,7 +45,7 @@
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/viewDemo"
-        android:text="ViewDemo"
+        android:text="进度条和图表"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

@@ -2,9 +2,11 @@ package com.lfk.justwetools.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 
 import com.lfk.justwetools.R;
 import com.lfk.justwetools.View.CircleGraph.CircleGraph;
+import com.lfk.justwetools.View.LineProgress.LineProgress;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,6 +20,8 @@ public class ViewDemoActivity extends ActionBarActivity {
         setContentView(R.layout.activity_view_demo);
 
         initCircleGraph();
+
+        initLineProgress();
     }
 
     private void initCircleGraph() {
@@ -43,5 +47,15 @@ public class ViewDemoActivity extends ActionBarActivity {
         CircleGraph graph = (CircleGraph) findViewById(R.id.circle_graph);
         graph.setText("搞基");
         graph.setJson(jsonArray.toString());
+    }
+
+    private void initLineProgress() {
+        final LineProgress lineProgress = (LineProgress) findViewById(R.id.linepro);
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lineProgress.setProgressing(lineProgress.getProgressing() + 10);
+            }
+        });
     }
 }

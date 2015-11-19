@@ -125,7 +125,7 @@ public class CircleGraph extends View {
     }
 
     private int measureHeight(int heightMeasureSpec) {
-        int result = 800;
+        int result = 500;
         int specMode = MeasureSpec.getMode(heightMeasureSpec);
         int specSize = MeasureSpec.getSize(heightMeasureSpec);
         if (specMode == MeasureSpec.AT_MOST || specMode == MeasureSpec.EXACTLY) {
@@ -135,7 +135,7 @@ public class CircleGraph extends View {
     }
 
     private int measureWidth(int widthMeasureSpec) {
-        int result = 800;
+        int result = 500;
         int specMode = MeasureSpec.getMode(widthMeasureSpec);
         int specSize = MeasureSpec.getSize(widthMeasureSpec);
         if (specMode == MeasureSpec.AT_MOST || specMode == MeasureSpec.EXACTLY) {
