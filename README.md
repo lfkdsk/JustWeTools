@@ -12,6 +12,7 @@
    * `VerTextView`支持竖行排版/下划线的TextView  
    * `FlashTextView`仿QQ的流光字体  
    * `Progress`进度条/环形进度条  
+   * `Clock` 绘制时钟  
    
 * Utils工具类
    * `AlarmUtil` 闹钟事件工具类
@@ -348,6 +349,31 @@ Item的点击事件：
         verTextView.setTextStartAlign(VerTextView.RIGHT); // 从右侧或左侧开始排版
         verTextView.setTextColor(color);           // 设定字体颜色
         ...
+```
+
+***
+
+* `Clock` 绘制时钟:自定义View绘制的时钟  
+![clock](https://github.com/lfkdsk/JustWeTools/blob/master/picture/clock.png)  
+``` xml
+            <com.lfk.justwetools.View.Clock.Clock
+                android:id="@+id/clock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/flashTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+```  
+* 一些设定：  
+``` java
+    void setColor(int color);
+    void setNeedleColor(int needleColor);
+    void setTextColor(int textColor);
+    void setCircleColor(int circleColor);
+    void setUnthehourLineColor(int unthehourLineColor);
+    void setThehourLineColor(int thehourLineColor);
+    void setHourSize(int hourSize);
+    ...
 ```
 
 ***
