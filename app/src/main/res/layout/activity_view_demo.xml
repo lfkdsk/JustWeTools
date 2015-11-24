@@ -43,7 +43,13 @@
                 android:text="Hello World"
                 android:textSize="40sp" />
 
-
+            <com.lfk.justwetools.View.Clock.Clock
+                android:id="@+id/clock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/flashTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

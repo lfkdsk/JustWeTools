@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.lfk.justwetools.R;
 import com.lfk.justwetools.View.CircleGraph.CircleGraph;
+import com.lfk.justwetools.View.Clock.Clock;
 import com.lfk.justwetools.View.LineProgress.LineProgress;
 
 import org.json.JSONArray;
@@ -22,6 +23,8 @@ public class ViewDemoActivity extends ActionBarActivity {
         initCircleGraph();
 
         initLineProgress();
+
+        initClock();
     }
 
     private void initCircleGraph() {
@@ -57,5 +60,10 @@ public class ViewDemoActivity extends ActionBarActivity {
                 lineProgress.setProgressing(lineProgress.getProgressing() + 10);
             }
         });
+    }
+
+    private void initClock() {
+        ((Clock) findViewById(R.id.clock)).
+                setColor(getResources().getColor(R.color.colorPrimary));
     }
 }
