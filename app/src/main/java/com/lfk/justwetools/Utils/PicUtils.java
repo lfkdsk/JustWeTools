@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
@@ -525,5 +526,24 @@ public class PicUtils {
         Canvas canvas = new Canvas(bitmap);
         v.draw(canvas);
         return bitmap;
+    }
+
+    /**
+     * 制作圆形图片
+     *
+     * @param rect
+     */
+    public static Bitmap rectBitmapToCircle(Bitmap rect) {
+        Shader mBitmapShader = new BitmapShader(rect, Shader.TileMode.CLAMP,
+                Shader.TileMode.CLAMP);
+        Paint paint = new Paint();
+        paint.setShader(mBitmapShader);
+        Bitmap output = Bitmap.createBitmap(rect.getWidth(), rect.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+        canvas.drawCircle(rect.getWidth() / 2,
+                rect.getHeight() / 2,
+                Math.min(rect.getWidth(), rect.getHeight()) / 2
+                , paint);
+        return output;
     }
 }
