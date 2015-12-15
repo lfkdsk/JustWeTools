@@ -4,15 +4,15 @@
 ##JustWe 现在有哪些模块?  
 
 * View自定义控件  
-   * `PaintView`画图工具(包含重构压感新版)  
-   * `CodeView`代码编辑  
-   * `ExplorerView`文件管理器  
-   * `ReadView`小说阅读器  
-   * `MarkDownView`支持MarkDown语法的文字渲染器  
-   * `VerTextView`支持竖行排版/下划线的TextView  
-   * `FlashTextView`仿QQ的流光字体  
-   * `Progress`进度条/环形进度条  
-   * `Clock` 绘制时钟  
+   * [`PaintView`画图工具(包含重构压感新版)](#paintView画图工具) 
+   * [`CodeView`代码编辑](#codeview代码查看修改工具)  
+   * [`ExplorerView`文件管理器](#explorerview-文件浏览器)
+   * [`ReadView`小说阅读器](#readview小说阅读)  
+   * [`MarkDownView`支持MarkDown语法的文字渲染器](#markdownview支持markdown语法的渲染器)  
+   * [`VerTextView`支持竖行排版/下划线的TextView](#vertextview竖行排版的textview)  
+   * [`FlashTextView`仿QQ的流光字体]()  
+   * [`Progress`进度条/环形进度条]()  
+   * [`Clock` 绘制时钟]()  
    
 * Utils工具类
    * `AlarmUtil` 闹钟事件工具类
@@ -401,7 +401,7 @@ Item的点击事件：
 
 ***
 
-* `Clock` 绘制时钟:自定义View绘制的时钟  
+####`Clock` 绘制时钟:自定义View绘制的时钟  
 ![clock](https://github.com/lfkdsk/JustWeTools/blob/master/picture/clock.png)  
 ``` xml
             <com.lfk.justwetools.View.Clock.Clock
