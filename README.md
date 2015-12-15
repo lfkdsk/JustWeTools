@@ -4,7 +4,7 @@
 ##JustWe 现在有哪些模块?  
 
 * View自定义控件  
-   * [`PaintView`画图工具(包含重构压感新版)](#paintView画图工具) 
+   * [`PaintView`画图工具(包含重构压感新版)](#paintview画图工具) 
    * [`CodeView`代码编辑](#codeview代码查看修改工具)  
    * [`ExplorerView`文件管理器](#explorerview-文件浏览器)
    * [`ReadView`小说阅读器](#readview小说阅读)  
@@ -12,7 +12,7 @@
    * [`VerTextView`支持竖行排版/下划线的TextView](#vertextview竖行排版的textview)  
    * [`FlashTextView`仿QQ的流光字体]()  
    * [`Progress`进度条/环形进度条]()  
-   * [`Clock` 绘制时钟]()  
+   * [`Clock` 绘制时钟](#clock-绘制时钟自定义view绘制的时钟)  
    
 * Utils工具类
    * `AlarmUtil` 闹钟事件工具类
@@ -370,17 +370,17 @@ Item的点击事件：
 ``` xml
 
     <com.lfk.justwetools.View.VerText.VerTextView
-        android:id="@+id/vertextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    android:id="@+id/vertextview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
         
 ```
 
 并添加:  
 ``` java
 
-        VerTextView verTextView = (VerTextView)findViewById(R.id.vertextview);
-        verTextView.setText(getResources().getString(R.string.poem));
+    VerTextView verTextView = (VerTextView)findViewById(R.id.vertextview);
+    verTextView.setText(getResources().getString(R.string.poem));
         
 ```
 
@@ -388,32 +388,39 @@ Item的点击事件：
 
 ``` java
 
-        verTextView.setFontSize(100);             // 设定字体尺寸
-        verTextView.setIsOpenUnderLine(true);     // 设定开启下划线
-        verTextView.setUnderLineColor(Color.RED); // 设定下划线颜色
-        verTextView.setUnderLineWidth(3);         // 设定下划线宽度
-        verTextView.setUnderLineSpacing(10);      // 设定下划线到字的间距
-        verTextView.setTextStartAlign(VerTextView.RIGHT); // 从右侧或左侧开始排版
-        verTextView.setTextColor(color);           // 设定字体颜色
-        ...
+    verTextView.setFontSize(100);             // 设定字体尺寸
+    verTextView.setIsOpenUnderLine(true);     // 设定开启下划线
+    verTextView.setUnderLineColor(Color.RED); // 设定下划线颜色
+    verTextView.setUnderLineWidth(3);         // 设定下划线宽度
+    verTextView.setUnderLineSpacing(10);      // 设定下划线到字的间距
+    verTextView.setTextStartAlign(VerTextView.RIGHT); // 从右侧或左侧开始排版
+    verTextView.setTextColor(color);           // 设定字体颜色
+    ...
         
 ```
 
 ***
 
 ####`Clock` 绘制时钟:自定义View绘制的时钟  
+
 ![clock](https://github.com/lfkdsk/JustWeTools/blob/master/picture/clock.png)  
+
 ``` xml
-            <com.lfk.justwetools.View.Clock.Clock
-                android:id="@+id/clock"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/flashTextView"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp" />
+
+    <com.lfk.justwetools.View.Clock.Clock
+        android:id="@+id/clock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flashTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
 ```  
-* 一些设定：  
+
+#####一些设定：  
+
 ``` java
+
     void setColor(int color);
     void setNeedleColor(int needleColor);
     void setTextColor(int textColor);
@@ -422,6 +429,7 @@ Item的点击事件：
     void setThehourLineColor(int thehourLineColor);
     void setHourSize(int hourSize);
     ...
+    
 ```
 
 ***
