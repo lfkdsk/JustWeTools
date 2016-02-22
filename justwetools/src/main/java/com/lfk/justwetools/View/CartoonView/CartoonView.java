@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.os.Environment;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.ListView;
 
@@ -60,8 +59,6 @@ public class CartoonView extends ListView {
 
         File[] list = new File(dirPath).listFiles();
 
-        Arrays.sort(list);
-
         for (int i = 0; i < list.length; i++) {
             Log.e("lfk", list[i].getName());
             if (list[i].getName().endsWith(".jpg")
@@ -69,26 +66,28 @@ public class CartoonView extends ListView {
                 fileList.add(list[i].getPath());
         }
 
+        Arrays.sort(list);
+
         return fileList;
     }
 
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        super.onLayout(changed, l, t, r, b);
-        int count = getChildCount();
-        // 为ViewGroup设定高度
-        MarginLayoutParams params = (MarginLayoutParams) getLayoutParams();
-        params.height = mScreenHeight * count;
-
-        setLayoutParams(params);
-
-        for (int i = 0; i < count; i++) {
-            View childView = getChildAt(i);
-            if (childView.getVisibility() != View.GONE) {
-                // 摆放每子View的位置
-                childView.layout(1, mScreenHeight * i,
-                        r, (i + 1) * mScreenHeight);
-            }
-        }
-    }
+//    @Override
+//    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+//        super.onLayout(changed, l, t, r, b);
+//        int count = getChildCount();
+//        // 为ViewGroup设定高度
+//        MarginLayoutParams params = (MarginLayoutParams) getLayoutParams();
+//        params.height = mScreenHeight * count;
+//
+//        setLayoutParams(params);
+//
+//        for (int i = 0; i < count; i++) {
+//            View childView = getChildAt(i);
+//            if (childView.getVisibility() != View.GONE) {
+//                // 摆放每子View的位置
+//                childView.layout(1, mScreenHeight * i,
+//                        r, (i + 1) * mScreenHeight);
+//            }
+//        }
+//    }
 }

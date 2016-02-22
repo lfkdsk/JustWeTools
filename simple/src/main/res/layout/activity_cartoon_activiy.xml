@@ -7,7 +7,7 @@
     tools:context=".Activity.CartoonActivity">
     <com.lfk.justwetools.View.CartoonView.CartoonView
         android:id="@+id/cartoon_view"
-        app:dir_path="/DrawAPicture/picture"
+        app:dir_path="/1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </com.lfk.justwetools.View.CartoonView.CartoonView>

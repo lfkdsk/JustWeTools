@@ -392,8 +392,7 @@ public class PicUtils {
      * @return
      */
     public static Drawable Bitmap2Drawable(Context context, Bitmap bitmap) {
-        BitmapDrawable bd = new BitmapDrawable(context.getResources(), bitmap);
-        return bd;
+        return new BitmapDrawable(context.getResources(), bitmap);
     }
 
     /**

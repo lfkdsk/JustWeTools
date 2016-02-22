@@ -1,7 +1,9 @@
 package com.lfk.justwetools.Utils;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -70,6 +72,7 @@ public class ImageLoader {
         FIFO, LIFO
     }
 
+    private static Context mContext;
 
     /**
      * 单例获得该实例对象
@@ -111,6 +114,7 @@ public class ImageLoader {
                         try {
                             mPoolSemaphore.acquire();
                         } catch (InterruptedException e) {
+
                         }
                     }
                 };
@@ -129,13 +133,11 @@ public class ImageLoader {
             protected int sizeOf(String key, Bitmap value) {
                 return value.getRowBytes() * value.getHeight();
             }
-
-            ;
         };
 
         mThreadPool = Executors.newFixedThreadPool(threadCount);
         mPoolSemaphore = new Semaphore(threadCount);
-        mTasks = new LinkedList<Runnable>();
+        mTasks = new LinkedList<>();
         mType = type == null ? Type.LIFO : type;
 
     }
@@ -159,7 +161,7 @@ public class ImageLoader {
                     Bitmap bm = holder.bitmap;
                     String path = holder.path;
                     if (imageView.getTag().toString().equals(path)) {
-                        imageView.setImageBitmap(bm);
+                        imageView.setBackground(new BitmapDrawable(mContext.getResources(), bm));
                     }
                 }
             };
@@ -237,8 +239,10 @@ public class ImageLoader {
      *
      * @return
      */
-    public static ImageLoader getInstance(int threadCount, Type type) {
-
+    public static ImageLoader getInstance(Context context,
+                                          int threadCount,
+                                          Type type) {
+        ImageLoader.mContext = context;
         if (mInstance == null) {
             synchronized (ImageLoader.class) {
                 if (mInstance == null) {
@@ -351,9 +355,8 @@ public class ImageLoader {
                 reqHeight);
         // 使用获取到的inSampleSize值再次解析图片
         options.inJustDecodeBounds = false;
-        Bitmap bitmap = BitmapFactory.decodeFile(pathName, options);
 
-        return bitmap;
+        return BitmapFactory.decodeFile(pathName, options);
     }
 
     private class ImgBeanHolder {
