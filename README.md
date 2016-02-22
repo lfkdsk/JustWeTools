@@ -12,7 +12,8 @@
    * [`VerTextView`支持竖行排版/下划线的TextView](#vertextview竖行排版的textview)  
    * [`FlashTextView`仿QQ的流光字体]()  
    * [`Progress`进度条/环形进度条]()  
-   * [`Clock` 绘制时钟](#clock-绘制时钟自定义view绘制的时钟)  
+   * [`Clock` 绘制时钟](#clock-绘制时钟自定义view绘制的时钟)
+   * [`CartoonView` 漫画阅读](#)  
    
 * Utils工具类
    * `AlarmUtil` 闹钟事件工具类
@@ -28,7 +29,56 @@
 
 ##模块如何使用：
 * 将Demo作为library加入项目，或是直接将代码拷入  
-* 下载demo ：[apk-demo](https://github.com/lfkdsk/JustWeTools/tree/master/demo-apk)  
+* 使用Gradle构建:  
+  * Step 1. Add the JitPack repository to your build file  
+  Add it in your root build.gradle at the end of repositories:  
+  
+  ``` groovy  
+  
+    	allprojects {
+			repositories {
+				...
+				maven { url "https://jitpack.io" }
+			}
+		}
+   	
+  ```
+  
+  * Step 2. Add the dependency  on
+  
+  
+  ``` groovy
+  
+      dependencies {
+	        compile 'com.github.lfkdsk:JustWeTools:v1.0'
+	  }
+		
+  ```
+* 使用Maven构建:  
+  * Step 1. Add the JitPack repository to your build file  
+  
+  ``` xml
+  
+    <repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+  
+  ```
+  
+  * Step 2. Add the dependency  
+  
+  ``` xml
+  	
+    <dependency>
+	    <groupId>com.github.lfkdsk</groupId>
+	    <artifactId>JustWeTools</artifactId>
+	    <version>v1.0</version>
+	</dependency>
+	
+  ```
 
 ##JustWe 模块介绍:  
 
