@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lfk.demo.Activity.ViewDemoActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.lfk.demo.View.CircleGraph.CircleGraph
+                android:id="@+id/circle_graph"
+                android:layout_width="match_parent"
+                android:layout_height="500dp" />
+
+            <com.lfk.demo.View.LineProgress.LineProgress
+                android:id="@+id/linepro"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/circle_graph" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linepro"
+                android:layout_centerHorizontal="true"
+                android:text="click" />
+
+            <com.lfk.demo.View.FlashTextView.FlashTextView
+                android:id="@+id/flashTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Hello World"
+                android:textSize="40sp" />
+
+            <com.lfk.demo.View.Clock.Clock
+                android:id="@+id/clock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/flashTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

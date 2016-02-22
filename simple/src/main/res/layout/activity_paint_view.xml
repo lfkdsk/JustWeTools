@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lfk.demo.Activity.PaintViewActivity">
+    <com.lfk.demo.View.PaintIt.PaintView
+        android:id="@+id/paintView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <LinearLayout
+        android:layout_margin="4dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+        <ImageButton
+            android:id="@+id/save"
+            android:background="@drawable/ic_action_new_light"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:id="@+id/redraw"
+            android:background="@drawable/icon_chonghui"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:id="@+id/paint"
+            android:background="@drawable/iconfont_bi"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:id="@+id/color"
+            android:background="@drawable/iconfont_color"
+            android:layout_width="48dp"
+
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:id="@+id/file"
+            android:background="@drawable/iconfont_daoru"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:id="@+id/eraser"
+            android:background="@drawable/iconfont_xpc"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content" />
+        <ImageButton
+            android:id="@+id/clear"
+            android:background="@drawable/iconfont_clear"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

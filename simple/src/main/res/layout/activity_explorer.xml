@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lfk.demo.Activity.ExplorerActivity">
+    <com.lfk.demo.View.Proportionview.ProportionView
+        android:id="@+id/pv"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+    <com.lfk.demo.View.FileExplorer.FileExplorer
+        android:id="@+id/ex"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
