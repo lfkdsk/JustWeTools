@@ -13,11 +13,12 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 
 import com.lfk.demo.R;
-import com.lfk.demo.View.NewPaint.PaintView;
+import com.lfk.justwetools.View.NewPaint.PaintView;
 
 public class NewPaintActivity extends ActionBarActivity {
     private PaintView paintView;
-    private int checkit;
+    private PaintView.mode checkit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,20 @@ public class NewPaintActivity extends ActionBarActivity {
             radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    checkit = checkedId;
+                    switch (checkedId) {
+                        case R.id.draw_circle:
+                            checkit = PaintView.mode.CIRCLE;
+                            break;
+                        case R.id.draw_line:
+                            checkit = PaintView.mode.LINE;
+                            break;
+                        case R.id.draw_path:
+                            checkit = PaintView.mode.PATH;
+                            break;
+                        case R.id.draw_rect:
+                            checkit = PaintView.mode.RECT;
+                            break;
+                    }
                 }
             });
             AlertDialog.Builder alert = new AlertDialog.Builder(this)

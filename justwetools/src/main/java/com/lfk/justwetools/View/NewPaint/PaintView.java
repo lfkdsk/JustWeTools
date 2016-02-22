@@ -95,7 +95,7 @@ public class PaintView extends View {
     private DrawBase drawBase = null;
 
     public enum mode {
-        PATH, CIRCLE, LINE, RECT
+        PATH, CIRCLE, LINE, RECT;
     }
 
 

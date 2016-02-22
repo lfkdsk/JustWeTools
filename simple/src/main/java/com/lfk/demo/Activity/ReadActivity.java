@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.lfk.demo.View.ReadView.ReadView;
+import com.lfk.justwetools.View.ReadView.ReadView;
 
 import java.io.File;
 

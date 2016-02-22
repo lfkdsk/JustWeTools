@@ -11,10 +11,10 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 
-import com.lfk.demo.View.PaintIt.OnPathListener;
-import com.lfk.demo.View.PaintIt.PaintView;
-import com.lfk.demo.View.PaintIt.PathNode;
-import com.lfk.demo.View.PaintIt.UserInfo;
+import com.lfk.justwetools.View.PaintIt.OnPathListener;
+import com.lfk.justwetools.View.PaintIt.PaintView;
+import com.lfk.justwetools.View.PaintIt.PathNode;
+import com.lfk.justwetools.View.PaintIt.UserInfo;
 import com.lfk.demo.R;
 
 import java.io.File;

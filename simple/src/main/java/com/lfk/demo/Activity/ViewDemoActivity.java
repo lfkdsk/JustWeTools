@@ -5,9 +5,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
 import com.lfk.demo.R;
-import com.lfk.demo.View.CircleGraph.CircleGraph;
-import com.lfk.demo.View.Clock.Clock;
-import com.lfk.demo.View.LineProgress.LineProgress;
+import com.lfk.justwetools.View.CircleGraph.CircleGraph;
+import com.lfk.justwetools.View.Clock.Clock;
+import com.lfk.justwetools.View.LineProgress.LineProgress;
 
 import org.json.JSONArray;
 import org.json.JSONException;

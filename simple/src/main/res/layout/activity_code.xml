@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     tools:context="com.lfk.demo.Activity.CodeActivity">
 
-    <com.lfk.demo.View.CodeView.CodeView
+    <com.lfk.justwetools.View.CodeView.CodeView
         android:id="@+id/mcodeview"
         android:layerType="hardware"
         android:layout_width="match_parent"

@@ -14,12 +14,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.lfk.demo.View.CircleGraph.CircleGraph
+            <com.lfk.justwetools.View.CircleGraph.CircleGraph
                 android:id="@+id/circle_graph"
                 android:layout_width="match_parent"
                 android:layout_height="500dp" />
 
-            <com.lfk.demo.View.LineProgress.LineProgress
+            <com.lfk.justwetools.View.LineProgress.LineProgress
                 android:id="@+id/linepro"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -33,7 +33,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="click" />
 
-            <com.lfk.demo.View.FlashTextView.FlashTextView
+            <com.lfk.justwetools.View.FlashTextView.FlashTextView
                 android:id="@+id/flashTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                 android:text="Hello World"
                 android:textSize="40sp" />
 
-            <com.lfk.demo.View.Clock.Clock
+            <com.lfk.justwetools.View.Clock.Clock
                 android:id="@+id/clock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.lfk.demo.R;
-import com.lfk.demo.View.VerText.VerTextView;
+import com.lfk.justwetools.View.VerText.VerTextView;
 
 public class VerTextActivity extends ActionBarActivity {
 
