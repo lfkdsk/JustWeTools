@@ -66,7 +66,7 @@ public class CartoonAdapter extends BaseAdapter {
         mImageLoader.loadImage(userList.get(position),
                 holder.imageView);
 
-        holder.textView.setText("");
+//        holder.textView.setText("");
 
         return convertView;
     }

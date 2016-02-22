@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.lfk.demo.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask">
             <intent-filter>
@@ -24,16 +24,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lfk.demo.Activity.PaintViewActivity"
+            android:name=".Activity.PaintViewActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.lfk.demo.Activity.ExplorerActivity"
-            android:label="@string/app_name"></activity>
+            android:name=".Activity.ExplorerActivity"
+            android:label="@string/app_name" />
         <activity
-            android:name="com.lfk.demo.Activity.CodeActivity"
+            android:name=".Activity.CodeActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lfk.demo.Activity.ReadActivity"
+            android:name=".Activity.ReadActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
@@ -57,10 +57,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lfk.demo.Activity.EditActivity"
-            android:label="@string/app_name"></activity>
+            android:name=".Activity.EditActivity"
+            android:label="@string/app_name" />
         <activity
-            android:name="com.lfk.demo.Activity.MarkDownActivity"
+            android:name=".Activity.MarkDownActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -71,12 +71,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lfk.demo.Activity.VerTextActivity"
-            android:label="@string/app_name"></activity>
+            android:name=".Activity.VerTextActivity"
+            android:label="@string/app_name" />
         <activity
-            android:name="com.lfk.demo.Activity.NewPaintActivity"
-            android:label="@string/app_name"></activity>
-        <activity android:name="com.lfk.demo.Activity.ViewDemoActivity"></activity>
+            android:name=".Activity.NewPaintActivity"
+            android:label="@string/app_name" />
+        <activity android:name=".Activity.ViewDemoActivity" />
+        <activity android:name=".Activity.CartoonActivity"></activity>
     </application>
 
 </manifest>

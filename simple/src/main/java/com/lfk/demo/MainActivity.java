@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.lfk.demo.Activity.CartoonActivity;
 import com.lfk.demo.Activity.CodeActivity;
 import com.lfk.demo.Activity.EditActivity;
 import com.lfk.demo.Activity.ExplorerActivity;
@@ -51,6 +52,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         findViewById(R.id.vertextview).setOnClickListener(this);
         findViewById(R.id.newPaint).setOnClickListener(this);
         findViewById(R.id.viewDemo).setOnClickListener(this);
+        findViewById(R.id.cartoonDemo).setOnClickListener(this);
     }
 
     @Override
@@ -148,6 +150,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 break;
             case R.id.viewDemo:
                 intent.setClass(MainActivity.this, ViewDemoActivity.class);
+                break;
+            case R.id.cartoonDemo:
+                intent.setClass(MainActivity.this, CartoonActivity.class);
                 break;
         }
         startActivity(intent);
