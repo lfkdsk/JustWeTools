@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/class_table_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.lfk.classtabledemo.ClassTable.HorizonWeekScrollView
+        android:id="@+id/class_table_week"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/week_title_height"
+        android:layout_marginLeft="@dimen/day_time_width"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/class_week_linear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+    </com.lfk.classtabledemo.ClassTable.HorizonWeekScrollView>
+
+    <ScrollView
+        android:id="@+id/class_table_scroller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/class_table_week"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/class_timeline_linear"
+                android:layout_width="@dimen/day_time_width"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <com.lfk.classtabledemo.ClassTable.HorizonAtScrollView
+                android:id="@+id/class_table_horizon_scroller"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/class_table_table"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.lfk.classtabledemo.ClassTable.HorizonAtScrollView>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -3,7 +3,7 @@ package com.lfk.justwetools.View.ClassTable;
 import android.content.Context;
 import android.view.View;
 
-import com.lfk.classtabledemo.R;
+import com.lfk.justwetools.R;
 
 import java.util.Calendar;
 

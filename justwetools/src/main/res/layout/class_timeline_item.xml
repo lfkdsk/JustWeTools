@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/class_timeline_item"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/day_time_height"
+        android:background="#ecf1f0"
+        android:gravity="center" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/time_line_line_padding"
+        android:background="#a9a9a9" />
+</LinearLayout>
+
