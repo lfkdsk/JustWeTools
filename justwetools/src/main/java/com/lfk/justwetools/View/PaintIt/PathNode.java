@@ -1,4 +1,5 @@
 package com.lfk.justwetools.View.PaintIt;
+
 import android.app.Application;
 
 import java.util.ArrayList;
@@ -6,9 +7,11 @@ import java.util.ArrayList;
 /**
  * Created by liufengkai on 15/8/25.
  */
-public class PathNode extends Application{
-    public class Node{
-        public Node() {}
+public class PathNode extends Application {
+    public class Node {
+        public Node() {
+        }
+
         public float x;
         public float y;
         public int PenColor;
@@ -19,6 +22,7 @@ public class PathNode extends Application{
         public int EraserWidth;
 
     }
+
     private ArrayList<Node> PathList;
 
 
@@ -26,16 +30,16 @@ public class PathNode extends Application{
         return PathList;
     }
 
-    public void addNode(Node node){
+    public void addNode(Node node) {
         PathList.add(node);
     }
 
-    public Node NewAnode(){
+    public Node NewAnode() {
         return new Node();
     }
 
 
-    public void clearList(){
+    public void clearList() {
         PathList.clear();
     }
 
@@ -49,16 +53,16 @@ public class PathNode extends Application{
         PathList = pathList;
     }
 
-    public Node getTheLastNote(){
-        return PathList.get(PathList.size()-1);
+    public Node getTheLastNote() {
+        return PathList.get(PathList.size() - 1);
     }
 
-    public void deleteTheLastNote(){
-        PathList.remove(PathList.size()-1);
+    public void deleteTheLastNote() {
+        PathList.remove(PathList.size() - 1);
     }
 
     public PathNode() {
-        PathList = new ArrayList<Node>();
+        PathList = new ArrayList<>();
     }
 
 }
