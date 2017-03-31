@@ -1,7 +1,7 @@
-#JustWeTools - Some useful tools
-![logo](https://github.com/lfkdsk/JustWeTools/blob/master/picture/justwe.png)
+# JustWeTools - Some useful tools  
+![logo](https://github.com/lfkdsk/JustWeTools/blob/master/picture/justwe.png)  
 
-##JustWe 现在有哪些模块?  
+## JustWe 现在有哪些模块?  
 
 * View自定义控件  
    * [`PaintView`画图工具(包含重构压感新版)](#paintview画图工具) 
@@ -14,7 +14,7 @@
    * [`Progress`进度条/环形进度条]()  
    * [`Clock` 绘制时钟](#clock-绘制时钟自定义view绘制的时钟)
    * [`CartoonView` 漫画阅读](#)  
-   
+
 * Utils工具类
    * `AlarmUtil` 闹钟事件工具类
    * `MPUtils` 短信电话工具类
@@ -31,72 +31,72 @@
 * 将Demo作为library加入项目，或是直接将代码拷入  
 * 使用Gradle构建:  
   * Step 1. Add the JitPack repository to your build file  
-  Add it in your root build.gradle at the end of repositories:  
-  
+    Add it in your root build.gradle at the end of repositories:  
+
   ``` groovy  
-  
+
     	allprojects {
-			repositories {
-				...
-				maven { url "https://jitpack.io" }
-			}
-		}
+  		repositories {
+  			...
+  			maven { url "https://jitpack.io" }
+  		}
+  	}
    	
   ```
-  
+
   * Step 2. Add the dependency  on
-  
-  
+
+
   ``` groovy
-  
+
       dependencies {
-	        compile 'com.github.lfkdsk:JustWeTools:v1.0'
-	  }
-		
+          compile 'com.github.lfkdsk:JustWeTools:v1.0'
+    }
+  	
   ```
 * 使用Maven构建:  
   * Step 1. Add the JitPack repository to your build file  
-  
+
   ``` xml
-  
+
     <repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
-  
+  	<repository>
+  	    <id>jitpack.io</id>
+  	    <url>https://jitpack.io</url>
+  	</repository>
+  </repositories>
+
   ```
-  
+
   * Step 2. Add the dependency  
-  
+
   ``` xml
   	
     <dependency>
-	    <groupId>com.github.lfkdsk</groupId>
-	    <artifactId>JustWeTools</artifactId>
-	    <version>v1.0</version>
-	</dependency>
-	
+      <groupId>com.github.lfkdsk</groupId>
+      <artifactId>JustWeTools</artifactId>
+      <version>v1.0</version>
+  </dependency>
+
   ```
 
-##JustWe 模块介绍:  
+## JustWe 模块介绍:    
 
-###View自定义控件:  
-####`PaintView`画图工具:
+### View自定义控件:    
+#### `PaintView`画图工具:  
 *  可直接使用设定按钮来实现已拥有的方法，且拓展性强
 *  基础功能：更换颜色、更换橡皮、以及更换橡皮和笔的粗细、清屏、倒入图片
 *  `特殊功能`：`保存画笔轨迹帧动画`、帧动画导入导出、ReDo和UnDo
 *  重构版本：提供笔刷类型基类DrawBase，可继承此类制作笔刷  
 
-#####效果图：
+##### 效果图：
 
 ![p1](https://github.com/lfkdsk/JustWeTools/blob/master/picture/gif.gif)
 ![p2](https://github.com/lfkdsk/JustWeTools/blob/master/picture/io.gif)
 
-#####使用基础功能只需要： 
+##### 使用基础功能只需要： 
 
-######1.1 添加xml：
+###### 1.1 添加xml：
 
 ```xml
    <com.lfk.justwetools.View.PaintIt.PaintView
@@ -104,13 +104,13 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent" />
 ```
-#####1.2 在activity里找到：
+##### 1.2 在activity里找到：
 
 ``` java
     paintView = (PaintView)findViewById(R.id.paint);
 ```
 
-#####若想使用帧动画相关功能：
+##### 若想使用帧动画相关功能：
 需要新建数据集，设定纪录paintview，并且设定onPathListener（）
 
 ``` java
@@ -150,14 +150,14 @@
 * 实现代码高亮，暗色主题 
 * 代码及时修改
 
-#####效果图：
+##### 效果图：
 ![p3](https://github.com/lfkdsk/JustWeTools/blob/master/picture/accomplish.png)
 ![p4](https://github.com/lfkdsk/JustWeTools/blob/master/picture/edit.png)
 
-#####使用基础功能只需要：
+##### 使用基础功能只需要：
 
-######2.1 添加xml：
-    
+###### 2.1 添加xml：
+
 ``` xml
     <com.lfk.justwetools.View.CodeView.CodeView
         android:id="@+id/mcodeview"
@@ -165,7 +165,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 ```
-######2.2 在Activity中获取路径：
+###### 2.2 在Activity中获取路径：
 
 
 ``` java
@@ -187,7 +187,7 @@
 
 如果是手动复制代码的话，需要复制assests文件夹下的js文件。
 
-######2.3 编辑修改：
+###### 2.3 编辑修改：
 ``` java
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -204,20 +204,20 @@
         return super.onOptionsItemSelected(item);
     }
 ```
-***  
-  
-####ExplorerView 文件浏览器：
+***
+
+#### ExplorerView 文件浏览器：
 * 继承自ListView
 * 可拓展性强
 * 可进行文件类型分析
 
-#####效果图：
+##### 效果图：
 ![p5](https://github.com/lfkdsk/JustWeTools/blob/master/picture/explorer1.png)
 ![p6](https://github.com/lfkdsk/JustWeTools/blob/master/picture/explorer2.png)
 
 * 使用基础功能
 
-######3.1 添加xml：
+###### 3.1 添加xml：
 ``` xml
 
     <com.lfk.justwetools.View.FileExplorer.FileExplorer
@@ -226,7 +226,7 @@
         android:layout_height="match_parent"/>
         
 ```
-######3.2 在Activity里面：
+###### 3.2 在Activity里面：
 
 ``` java
 
@@ -266,7 +266,7 @@ Item的点击事件：
             }
         });
         
-```  
+```
 
 返回键返回上一级：
 ``` java 
@@ -288,10 +288,10 @@ Item的点击事件：
     
 ```
 
-####`高级功能`: 
+#### `高级功能`: 
 根据文件夹内的各种文件类型的大小比例，分析比例图，不建议在sd卡根目录使用内容过多反应较慢.
 
-#####3.3 添加xml：
+##### 3.3 添加xml：
 
 ``` xml
 
@@ -303,7 +303,7 @@ Item的点击事件：
         
 ```
 
-#####3.4 在Activity中添加：
+##### 3.4 在Activity中添加：
 ``` java
 
     final ProportionView view = (ProportionView) findViewById(R.id.pv);
@@ -326,25 +326,25 @@ Item的点击事件：
     });
     
 ```
-***  
+***
 
-####`ReadView`小说阅读：
+#### `ReadView`小说阅读：
 * 基于Canvas制作的小说阅读  
 * 可更换字体、字号、字颜色 
 * 拓展性强  
 
-#####效果图：  
+##### 效果图：  
 ![p7](https://github.com/lfkdsk/JustWeTools/blob/master/picture/readbook.png)  
 
-######使用基础功能只需要：
+###### 使用基础功能只需要：
 ``` java
 
    ReadView readView = new ReadView(this,dir.getPath());
    setContentView(readView);
    
 ```
-  
-######如果需要打开文件时调用请修改manifest和：  
+
+###### 如果需要打开文件时调用请修改manifest和：  
 ``` java
 
         File dir = null;
@@ -360,19 +360,19 @@ Item的点击事件：
             finish();
         setContentView(readView);
         
-```  
+```
 
-***  
+***
 
-####`MarkDownView`支持MarkDown语法的渲染器:  
+#### `MarkDownView`支持MarkDown语法的渲染器:  
 * 基于WebView的MarkDown渲染器  
 * 支持标准化的MarkDown语法
 * 调用接口和`CodeView`保持一致使用简便  
 
-#####效果图:  
+##### 效果图:  
 ![markdown](https://github.com/lfkdsk/JustWeTools/blob/master/picture/markdown.png)   
-  
-######使用基础功能:  
+
+###### 使用基础功能:  
 ``` xml
 
     <com.lfk.justwetools.View.MarkDown.MarkDownView
@@ -393,7 +393,7 @@ Item的点击事件：
         
 ```
 
-######如果需要打开文件时调用请修改manifest和：  
+###### 如果需要打开文件时调用请修改manifest和：  
 ``` java
 
         File dir = null;
@@ -407,16 +407,16 @@ Item的点击事件：
         }
         
 ```
-***  
+***
 
-####`VerTextView`竖行排版的TextView:  
+#### `VerTextView`竖行排版的TextView:  
 * 支持竖行排版
 * 添加了下划线功能，开启简便，下划线粗细、颜色、间距均可自定义
 * 接口调用方式与TextView相似，使用简便  
 
-#####效果图:  
+##### 效果图:  
 ![vertextview](https://github.com/lfkdsk/JustWeTools/blob/master/picture/VerTextView.png)  
-######使用基础功能:  
+###### 使用基础功能:  
 ``` xml
 
     <com.lfk.justwetools.View.VerText.VerTextView
@@ -434,7 +434,7 @@ Item的点击事件：
         
 ```
 
-######一些设定:   
+###### 一些设定:   
 
 ``` java
 
@@ -451,7 +451,7 @@ Item的点击事件：
 
 ***
 
-####`Clock` 绘制时钟:自定义View绘制的时钟  
+#### `Clock` 绘制时钟:自定义View绘制的时钟  
 
 ![clock](https://github.com/lfkdsk/JustWeTools/blob/master/picture/clock.png)  
 
@@ -465,9 +465,9 @@ Item的点击事件：
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp" />
 
-```  
+```
 
-#####一些设定：  
+##### 一些设定：  
 
 ``` java
 
@@ -484,7 +484,7 @@ Item的点击事件：
 
 ***
 
-##有问题反馈
+## 有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
 * 邮件:lfk_dsk@hotmail.com  
@@ -498,9 +498,9 @@ Item的点击事件：
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
-
+    
        http://www.apache.org/licenses/LICENSE-2.0
-
+    
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
