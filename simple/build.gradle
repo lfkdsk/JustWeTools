@@ -1,28 +1,4 @@
 apply plugin: 'com.android.application'
-ext {
-
-    bintrayRepo = 'maven'
-    bintrayName = 'just-we-tools'
-
-    publishedGroupId = 'com.github.lfkdsk'
-    libraryName = 'just-we-tools'
-    artifact = 'just-we-tools'
-
-    libraryDescription = 'Some useful tools'
-
-    siteUrl = 'https://github.com/lfkdsk/JustWeTools'
-    gitUrl = 'https://github.com/lfkdsk/JustWeTools.git'
-
-    libraryVersion = '0.9.2'
-
-    developerId = 'JustWe'
-    developerName = 'lfkdsk'
-    developerEmail = 'lfk_dsk@hotmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
 android {
     compileSdkVersion 23
     buildToolsVersion '23.0.2'
@@ -50,3 +26,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile project(':justwetools')
 }
+
+apply from: 'https://raw.github.com/Vorlonsoft/GradleMavenPush/master/maven-push.gradle'
